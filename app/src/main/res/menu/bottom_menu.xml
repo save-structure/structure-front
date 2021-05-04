@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_weather"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_wb_sunny_24"
+        android:title="Weather"/>
+    <item
+        android:id="@+id/action_emotion"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_emoji_emotions_24"
+        android:title="Emotion"/>
+    <item
+        android:id="@+id/action_calendar"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="Calendar"/>
+    <item
+        android:id="@+id/action_playlist"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Playlist"/>
+</menu>
