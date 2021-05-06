@@ -22,38 +22,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/ic_excited" />
+            android:button="@drawable/ic_excited"
+            android:textColorLink="#A990BA" />
 
         <RadioButton
             android:id="@+id/rb_happy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/ic_happy" />
+            android:button="@drawable/ic_happy"
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_soso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/ic_soso" />
+            android:button="@drawable/ic_soso"
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_sad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/ic_sad" />
+            android:button="@drawable/ic_sad"
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_angry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:button="@drawable/ic_angry" />
+            android:button="@drawable/ic_angry"
+            android:textColorLink="#A990BA"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/bt_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
