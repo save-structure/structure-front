@@ -3,6 +3,7 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+<<<<<<< HEAD
         <entry key="imageWizard">
           <value>
             <PersistentState />
@@ -44,6 +45,11 @@
                 </map>
               </option>
             </PersistentState>
+=======
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
+>>>>>>> de83e8dee99bf77927ad59be4d9ccf966ce765f4
           </value>
         </entry>
       </map>
