@@ -13,7 +13,6 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25">
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/ic_happy"
-            android:textColorLink="#A990BA" />
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_soso"
@@ -40,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/ic_soso"
-            android:textColorLink="#A990BA" />
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_sad"
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/ic_sad"
-            android:textColorLink="#A990BA" />
+            android:textColorLink="#A990BA"/>
 
         <RadioButton
             android:id="@+id/rb_angry"
@@ -56,7 +55,17 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:button="@drawable/ic_angry"
-            android:textColorLink="#A990BA" />
+            android:textColorLink="#A990BA"/>
+
+        <ImageButton
+            android:id="@+id/bt_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/ic_camera" />
 
     </RadioGroup>
 
@@ -79,20 +88,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <ImageButton
-        android:id="@+id/bt_camera"
-        android:layout_width="54dp"
-        android:layout_height="44dp"
-        android:layout_margin="5dp"
-        android:layout_weight="1"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/rg_emotions"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.253"
-        app:srcCompat="@drawable/ic_camera" />
 </androidx.constraintlayout.widget.ConstraintLayout>

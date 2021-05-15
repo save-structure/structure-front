@@ -1,72 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
-
     <TextView
-        android:id="@+id/text_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_weight="1"
-        android:text="Music Calendar"
-        android:textSize="25sp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bg_calendar">
-
-        <CalendarView
-            android:id="@+id/music_calendar"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:dateTextAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:minDate="01/01/2021"
-            android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body1">
-
-        </CalendarView>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/text_curmonth"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="5월"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:id="@+id/graph_monthly"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="#A494C1"
-        android:orientation="vertical" />
-
-    <TextView
-        android:id="@+id/text_total"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="전체"
-        android:textSize="20sp" />
-
-    <LinearLayout
-        android:id="@+id/graph_total"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="#A494C1"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
+        android:text="calendar화면입니다"
+        android:textSize="40sp"/>
 </LinearLayout>
