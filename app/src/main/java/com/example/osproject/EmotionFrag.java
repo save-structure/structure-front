@@ -47,7 +47,7 @@ public class EmotionFrag extends Fragment {
     private RadioGroup rg_emotions;
     private RadioButton rb_excited, rb_happy, rb_soso, rb_sad, rb_angry;
     private Button bt_camera;
-    private int feelingId = 0;
+    private int feelingId;
 
     String url = "https://dev.evertime.shop/feeling/:num";
 
@@ -65,7 +65,7 @@ public class EmotionFrag extends Fragment {
         rb_angry = view.findViewById(R.id.rb_angry);
         //bt_camera = view.findViewById(R.id.bt_camera);
 
-
+        feelingId = 1;
 
         rg_emotions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
@@ -76,21 +76,22 @@ public class EmotionFrag extends Fragment {
                 else if(checkedId == R.id.rb_soso) feelingId = 3;
                 else if(checkedId == R.id.rb_sad) feelingId = 4;
                 else if(checkedId == R.id.rb_angry) feelingId = 5;
-
                 //Toast.makeText(getActivity(),Integer.toString(feelingId),Toast.LENGTH_SHORT).show();
                 //feelingId으로 emotion정보 반환
+
                 postData();
             }
         });
         return view;
     }
 
+
     public void postData(){
         String url="https://dev.evertime.shop/feeling/:num";
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JSONObject object = new JSONObject();
         try {
-            object.put("num",feelingId);
+            object.put("num",String.valueOf(feelingId));
         } catch (JSONException e) {
             e.printStackTrace();
         }
