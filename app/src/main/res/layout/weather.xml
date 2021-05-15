@@ -1,11 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="weather화면입니다"
-        android:textSize="40sp"/>
+
+    // refresh할 layout에 id 할당
+    //android:id="@+id/swipe_refresh_layout"
+    // android:background="@color/design_default_color_on_primary" 사이즈 확인
+
+    <!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+<!--    -->
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weather Based Recommendation"
+            android:textColor="#808080"
+            android:textSize="23dp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/round">
+
+
+        <ImageView
+            android:id="@+id/weather_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"></ImageView>
+
+        <TextView
+            android:id="@+id/mLocationTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="35dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:text="하남시" />
+
+
+        <TextView
+            android:id="@+id/mCountryTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="205dp"
+            android:layout_marginTop="35dp"
+            android:text="대한민국"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="75dp"
+            android:text="최고:"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/mMax_TempTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="75dp"
+            android:text="20"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="75dp"
+            android:text="최저:"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+
+        <TextView
+            android:id="@+id/mMin_TempTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="75dp"
+            android:text="10"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="35dp"
+            android:text="°C"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/mTempTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="295dp"
+            android:layout_marginTop="35dp"
+            android:text="12"
+            android:textColor="@color/black"
+            android:textSize="50dp" />
+
+        <TextView
+            android:id="@+id/mMainTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="130dp"
+            android:gravity="right"
+            android:text="맑음"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/mDescriptionTextView"
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="165dp"
+            android:gravity="right"
+            android:text="맑은 하늘"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginRight="10dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="날씨에 따른 노래 추천이에요!"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="10dp"
+            android:background="#AB96CF">
+
+
+            <ImageView
+                android:id="@+id/album_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/black"></ImageView>
+
+            <TextView
+                android:id="@+id/song_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="22dp"
+                android:text="Zombie"
+                android:textSize="15dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/song_singer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="22dp"
+                android:text="DAY6(데이식스)"
+                android:textSize="15dp"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:id="@+id/play_butt"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginLeft="275dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_baseline_play_circle_outline_24"
+                android:backgroundTint="@null"></Button>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="150dp"
+            android:text="이 노래를 플레이리스트에 추가 할까요?"
+            android:textSize="20dp"></TextView>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="275dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/ic_baseline_thumb_up_24"></Button>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/ic_baseline_thumb_down_24"></Button>
+
+
+    </FrameLayout>
+
+
 </LinearLayout>
