@@ -42,11 +42,11 @@
 
         <ImageView
             android:id="@+id/weather_pic"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/black"></ImageView>
+            android:layout_marginTop="20dp"></ImageView>
+
 
         <TextView
             android:id="@+id/mLocationTextView"
@@ -55,17 +55,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
             android:layout_marginTop="35dp"
+            android:text="하남시"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            tools:text="하남시" />
-
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/mCountryTextView"
             android:name="weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="205dp"
+            android:layout_marginLeft="220dp"
             android:layout_marginTop="35dp"
             android:text="대한민국"
             android:textColor="@color/black"
@@ -92,9 +91,19 @@
             android:textSize="15dp" />
 
         <TextView
+            android:name="weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="210dp"
+            android:layout_marginLeft="188dp"
+            android:layout_marginTop="75dp"
+            android:text="°C ,"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
             android:layout_marginTop="75dp"
             android:text="최저:"
             android:textColor="@color/black"
@@ -106,9 +115,19 @@
             android:name="weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="260dp"
             android:layout_marginTop="75dp"
             android:text="10"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+
+        <TextView
+            android:name="weather.WeatherFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="278dp"
+            android:layout_marginTop="75dp"
+            android:text="°C"
             android:textColor="@color/black"
             android:textSize="15dp" />
 
@@ -138,7 +157,7 @@
             android:name="weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="130dp"
             android:gravity="right"
             android:text="맑음"
@@ -150,7 +169,7 @@
             android:name="weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="165dp"
             android:gravity="right"
             android:text="맑은 하늘"
@@ -183,7 +202,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="10dp"
-            android:background="#AB96CF">
+            android:background="#C9BED3">
 
 
             <ImageView
@@ -202,8 +221,8 @@
                 android:layout_marginLeft="105dp"
                 android:layout_marginTop="22dp"
                 android:text="Zombie"
-                android:textSize="15dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/song_singer"
@@ -212,13 +231,13 @@
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="22dp"
                 android:text="DAY6(데이식스)"
-                android:textSize="15dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
             <Button
                 android:id="@+id/play_butt"
                 android:layout_width="wrap_content"
-                android:layout_height="83dp"
+                android:layout_height="73dp"
                 android:layout_marginLeft="275dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_baseline_play_circle_outline_24"
