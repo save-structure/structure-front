@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,36 +20,25 @@ public class CalendarFrag extends Fragment {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private Button bt_OK;
+    private TextView receivedDate;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.calendar,container,false);
+        view = inflater.inflate(R.layout.calendar, container, false);
 
         music_calendar = view.findViewById(R.id.music_calendar);
         music_calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                createNewContactDialog();
+                CalPopupFrag dialog = new CalPopupFrag();
+                dialog.year = year;
+                dialog.month = month + 1;
+                dialog.day = dayOfMonth;
+                dialog.show(getFragmentManager(), "CalPopupFrag");
             }
         });
 
         return view;
     }
-
-    public void createNewContactDialog(){
-        dialogBuilder = new AlertDialog.Builder(getActivity());
-        final View contactPopupView = getLayoutInflater().inflate(R.layout.calendar_popuplist, null);
-        bt_OK = contactPopupView.findViewById(R.id.bt_OK);
-        dialogBuilder.setView(contactPopupView);
-        dialog = dialogBuilder.create();
-        dialog.show();
-        bt_OK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
-
 }

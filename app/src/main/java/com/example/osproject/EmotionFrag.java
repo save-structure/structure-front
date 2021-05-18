@@ -91,7 +91,7 @@ public class EmotionFrag extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JSONObject object = new JSONObject();
         try {
-            object.put("num",String.valueOf(feelingId));
+            object.put("num",feelingId);
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -24,10 +24,10 @@
             android:id="@+id/music_calendar"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            android:dateTextAppearance="@style/TextAppearance.AppCompat.Body1"
             android:minDate="01/01/2021"
-            android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body1">
-
+            android:dateTextAppearance="@style/CalenderViewDateCustomText"
+            android:theme="@style/CalenderViewCustom"
+            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText">
         </CalendarView>
     </LinearLayout>
 
@@ -43,11 +43,51 @@
     <LinearLayout
         android:id="@+id/graph_monthly"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:background="#A494C1"
-        android:orientation="vertical" />
+        android:background="#00A494C1">
+
+        <LinearLayout
+            android:id="@+id/monthly_excited"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#F1C5CF"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/monthly_happy"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#D4E477"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/monthly_soso"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#FFE58E"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/monthly_sad"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#B2DFF8"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/monthly_angry"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#ED8E87"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_total"
@@ -61,12 +101,45 @@
     <LinearLayout
         android:id="@+id/graph_total"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
-        android:background="#A494C1"
-        android:orientation="vertical">
+        android:background="#00A494C1">
 
+        <LinearLayout
+            android:id="@+id/total_excited"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#F1C5CF"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/total_happy"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#D4E477"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/total_soso"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#FFE58E"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/total_sad"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#B2DFF8"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/total_angry"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#ED8E87"
+            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
