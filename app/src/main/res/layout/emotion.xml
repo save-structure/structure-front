@@ -70,40 +70,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:button="@drawable/ic_excited"
-                    android:textColorLink="#A990BA" />
+                    android:button="@drawable/style_excited" />
 
                 <RadioButton
                     android:id="@+id/rb_happy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:button="@drawable/ic_happy"
-                    android:textColorLink="#A990BA" />
+                    android:button="@drawable/style_happy" />
 
                 <RadioButton
                     android:id="@+id/rb_soso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:button="@drawable/ic_soso"
-                    android:textColorLink="#A990BA" />
+                    android:button="@drawable/style_soso" />
 
                 <RadioButton
                     android:id="@+id/rb_sad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:button="@drawable/ic_sad"
-                    android:textColorLink="#A990BA" />
+                    android:button="@drawable/style_sad" />
 
                 <RadioButton
                     android:id="@+id/rb_angry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:button="@drawable/ic_angry"
-                    android:textColorLink="#A990BA" />
+                    android:button="@drawable/style_angry" />
 
             </RadioGroup>
 
@@ -118,6 +113,17 @@
 
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/ic_camera" />
+
+            <ImageButton
+                android:id="@+id/bt_settings"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="350dp"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="15dp"
+                android:background="#00FFFFFF"
+                android:tint="#6E6E6E"
+                app:srcCompat="@drawable/ic_baseline_settings_24" />
 
         </FrameLayout>
 

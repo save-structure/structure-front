@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private CalendarFrag calendar;
     private PlaylistFrag playlist;
 
+    public int type1 = 1, type2 = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

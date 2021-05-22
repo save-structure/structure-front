@@ -1,0 +1,6 @@
+각자 로컬 이름 브랜치에 커밋을 한다.
+
+main으로 checkout해서 로컬 메인과 이름 브랜치를 merge 해서 최종적으로 로컬 main에서 합치고, 원격 main으로 push하는데..
+
+주의 ) 로컬 main이랑 branch를 합칠때 누가 이미 원격 main에 푸쉬를 해놓은 상태면,(처음에 pull한 원격 main과 로컬 main이 달라져 있으면)
+		로컬 main을 pull 하고 merge 해야 함

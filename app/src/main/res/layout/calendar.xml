@@ -37,16 +37,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_weight="1"
-        android:text="5월"
+        android:text="*월"
         android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/graph_monthly"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="#00A494C1">
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/monthly_excited"
@@ -102,7 +101,7 @@
         android:id="@+id/graph_total"
         android:layout_width="350dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:background="#00A494C1">
 
