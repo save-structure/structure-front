@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
@@ -31,21 +32,87 @@
         </CalendarView>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_curmonth"
+    <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="*월"
-        android:textSize="20sp" />
+        android:orientation="horizontal">
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/text_curmonth"
+            android:layout_width="452dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="*월"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/ic_excited"
+                app:tint="#E8AFBC" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/ic_happy"
+                app:tint="#C6DD3A" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/ic_soso"
+                app:tint="#FAD763" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/ic_sad"
+                app:tint="#9EDAFB" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                app:srcCompat="@drawable/ic_angry"
+                app:tint="#ED8E87" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
         android:id="@+id/graph_monthly"
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/text_nodata1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="10dp"
+            android:text="기록이 없습니다" />
 
         <LinearLayout
             android:id="@+id/monthly_excited"
@@ -58,6 +125,8 @@
             android:id="@+id/monthly_happy"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="#D4E477"
             android:orientation="horizontal">
 
@@ -67,6 +136,8 @@
             android:id="@+id/monthly_soso"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
             android:background="#FFE58E"
             android:orientation="horizontal">
 
@@ -76,6 +147,8 @@
             android:id="@+id/monthly_sad"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="210dp"
+            android:layout_marginLeft="210dp"
             android:background="#B2DFF8"
             android:orientation="horizontal"></LinearLayout>
 
@@ -83,10 +156,11 @@
             android:id="@+id/monthly_angry"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="280dp"
+            android:layout_marginLeft="280dp"
             android:background="#ED8E87"
             android:orientation="horizontal" />
-
-    </LinearLayout>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/text_total"
@@ -97,13 +171,21 @@
         android:text="전체"
         android:textSize="20sp" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/graph_total"
         android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
-        android:layout_weight="1"
-        android:background="#00A494C1">
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/text_nodata2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="10dp"
+            android:text="기록이 없습니다" />
 
         <LinearLayout
             android:id="@+id/total_excited"
@@ -116,6 +198,8 @@
             android:id="@+id/total_happy"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="#D4E477"
             android:orientation="horizontal"></LinearLayout>
 
@@ -123,6 +207,8 @@
             android:id="@+id/total_soso"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
             android:background="#FFE58E"
             android:orientation="horizontal"></LinearLayout>
 
@@ -130,6 +216,8 @@
             android:id="@+id/total_sad"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="210dp"
+            android:layout_marginLeft="210dp"
             android:background="#B2DFF8"
             android:orientation="horizontal"></LinearLayout>
 
@@ -137,8 +225,10 @@
             android:id="@+id/total_angry"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="280dp"
+            android:layout_marginLeft="280dp"
             android:background="#ED8E87"
             android:orientation="horizontal"></LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

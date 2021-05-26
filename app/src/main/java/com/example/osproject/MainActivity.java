@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private PlaylistFrag playlist;
 
     public int type1 = 1, type2 = 1;
+    public boolean emotion_selected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         calendar = new CalendarFrag();
         playlist = new PlaylistFrag();
         setFrag(0);         //첫 프래그먼트 화면 지정
-
     }
 
     //프래그먼트 교체가 일어나는 실행문

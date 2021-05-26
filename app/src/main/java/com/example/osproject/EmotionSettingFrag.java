@@ -42,7 +42,6 @@ public class EmotionSettingFrag extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.emotion_setting, container, false);
-        Toast.makeText(getActivity(), type1 + " " + type2, Toast.LENGTH_SHORT);
 
         rg_type1 = view.findViewById(R.id.rg_type1);
         rg_type2 = view.findViewById(R.id.rg_type2);

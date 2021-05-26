@@ -35,6 +35,12 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/round2">
 
+            <ImageView
+                android:id="@+id/testImage"
+                android:layout_width="71dp"
+                android:layout_height="74dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
             <TextView
                 android:id="@+id/text_selectemotion"
                 android:layout_width="wrap_content"
@@ -50,6 +56,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/bt_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="150dp"
+                android:background="#00302723"
+                android:text="OK"
+                android:textColor="#500B0B"
+                android:textColorLink="#FFFFFF"
+                android:textSize="16sp" />
 
             <RadioGroup
                 android:id="@+id/rg_emotions"
@@ -109,7 +128,7 @@
                 android:layout_marginLeft="320dp"
                 android:layout_marginTop="92dp"
 
-                android:background="#FFFFFF"
+                android:background="#00FFFFFF"
 
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/ic_camera" />

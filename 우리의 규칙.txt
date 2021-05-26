@@ -4,3 +4,11 @@ main으로 checkout해서 로컬 메인과 이름 브랜치를 merge 해서 최�
 
 주의 ) 로컬 main이랑 branch를 합칠때 누가 이미 원격 main에 푸쉬를 해놓은 상태면,(처음에 pull한 원격 main과 로컬 main이 달라져 있으면)
 		로컬 main을 pull 하고 merge 해야 함
+		
+		
+***전격수정***(5/22일자)
+처음 커밋할 사람이 자신의 main브랜치에 add+commit을 한다. 그 후 원격 main에 push를 한다.(git checkout main / git add * / git commit -m"message" / git push origin main)
+다음 커밋할 사람이 자신의 main브랜치에 origin main을 pull 받는다. (git checkout main / git pull origin main)
+자신의 수정사항을 로컬 main에 add+commit한 후, origin main에 push한다. (git add * / git commit -m"" / git push origin main)
+처음 커밋했던 사람이 자신의 main브랜치에 pull을 해온다. (git pull origin main)
+

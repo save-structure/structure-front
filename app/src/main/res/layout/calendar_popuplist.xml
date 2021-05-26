@@ -45,20 +45,31 @@
             android:layout_marginTop="10dp"
             android:background="#FAFAFA">
 
+            <TextView
+                android:id="@+id/text_nomusic1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:text="추천받은 음악이 없습니다"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/img_weather_cover"
-                android:layout_width="71dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/text_weather_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:layout_marginLeft="110dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="10dp"
                 android:text="music title" />
 
@@ -66,10 +77,11 @@
                 android:id="@+id/text_weather_artist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="40dp"
-                android:text="artist" />
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="42dp"
+                android:text="artist"
+                android:textSize="12sp" />
         </FrameLayout>
     </LinearLayout>
 
@@ -95,6 +107,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 app:srcCompat="@drawable/ic_happy" />
+
         </LinearLayout>
 
         <FrameLayout
@@ -105,31 +118,45 @@
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF">
 
+            <TextView
+                android:id="@+id/text_nomusic2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:text="추천받은 음악이 없습니다"
+                android:visibility="invisible" />
+
             <ImageView
                 android:id="@+id/img_emotion_cover"
-                android:layout_width="71dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_width="81dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/text_emotion_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:layout_marginLeft="110dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
                 android:layout_marginTop="10dp"
-                android:text="music title" />
+                android:text="music title"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/text_emotion_artist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="110dp"
-                android:layout_marginLeft="110dp"
-                android:layout_marginTop="40dp"
-                android:text="artist" />
+                android:layout_marginStart="100dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="42dp"
+                android:text="artist"
+                android:textSize="12sp" />
 
         </FrameLayout>
 
