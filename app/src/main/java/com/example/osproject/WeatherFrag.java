@@ -124,7 +124,6 @@ public class WeatherFrag extends Fragment {
                     Double maxtemp = main_object.getDouble("temp_max");
                     Double mintemp = main_object.getDouble("temp_min");
                     String maintx = weather.getString("main");
-                    String desttx = weather.getString("description");
 
 //                    Double long = coord_object.getDouble("lon");
 //                    Double lati = coord_object.getDouble("lat");
