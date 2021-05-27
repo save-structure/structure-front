@@ -41,12 +41,15 @@ public class PlaylistFrag extends Fragment {
     //empty arraylist 생성(nonprefixed, 동적인 노래개수)
     static ArrayList<Song> favList = new ArrayList<Song>();
 
+    int wf = 0;
+    int ff = 0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.playlist,container,false);
+        view = inflater.inflate(R.layout.playlist, container, false);
 
-        playlist = (RecyclerView)view.findViewById(R.id.rv);
+        playlist = (RecyclerView) view.findViewById(R.id.rv);
         songAdapter = new SongAdapter(favList);
         playlist.setAdapter(songAdapter);
         playlist.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -72,13 +75,14 @@ public class PlaylistFrag extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (checkedId == R.id.rb_thunderstorm) get_weather_pl(1);
-                else if (checkedId == R.id.rb_drizzle) get_weather_pl(2);
-                else if (checkedId == R.id.rb_rain) get_weather_pl(3);
-                else if (checkedId == R.id.rb_snow) get_weather_pl(4);
-                else if (checkedId == R.id.rb_atmosphere) get_weather_pl(5);
-                else if (checkedId == R.id.rb_clear) get_weather_pl(6);
-                else if (checkedId == R.id.rb_clouds) get_weather_pl(7);
+                if (checkedId == R.id.rb_no_noweather) wf = 0;
+                else if (checkedId == R.id.rb_thunderstorm) wf = 1;
+                else if (checkedId == R.id.rb_drizzle) wf = 2;
+                else if (checkedId == R.id.rb_rain) wf = 3;
+                else if (checkedId == R.id.rb_snow) wf = 4;
+                else if (checkedId == R.id.rb_atmosphere) wf = 5;
+                else if (checkedId == R.id.rb_clear) wf = 6;
+                else if (checkedId == R.id.rb_clouds) wf = 7;
 
             }
         });
@@ -87,20 +91,161 @@ public class PlaylistFrag extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (checkedId == R.id.rb_excited) get_feeling_pl(1);
-                else if (checkedId == R.id.rb_happy) get_feeling_pl(2);
-                else if (checkedId == R.id.rb_soso) get_feeling_pl(3);
-                else if (checkedId == R.id.rb_sad) get_feeling_pl(4);
-                else if (checkedId == R.id.rb_angry) get_feeling_pl(5);
-
+                if (checkedId == R.id.rb_no_nofeeling) ff = 0;
+                else if (checkedId == R.id.rb_excited) ff = 1;
+                else if (checkedId == R.id.rb_happy) ff = 2;
+                else if (checkedId == R.id.rb_soso) ff = 3;
+                else if (checkedId == R.id.rb_sad) ff = 4;
+                else if (checkedId == R.id.rb_angry) ff = 5;
             }
         });
+
+
+        // 아무 필터 안고른 상태 : 좋아요 플리
+        // 날씨필터만 : 날씨플리
+        // 날씨,기분 필터 : 합쳐진거
+
+        get_thumbup_pl();
+
+//        if(ff != 0 || wf != 0) {
+//            favList = new ArrayList<Song>();
+//            get_thumbup_pl();
+//        }
+//        else{
+//            favList = new ArrayList<Song>();
+//            get_fiter_pl(wf,ff);
+//        }
+
 //        for(int i=0;i<favList.size();i++){
 //            Log.e("johyun", favList.get(i).getTitle());
 //        }
+
+
         return view;
     }
 
+    public void init_pl(){
+        favList = new ArrayList<Song>();
+    }
+
+
+    public void get_thumbup_pl() {
+        String url = "https://dev.evertime.shop/playlist";
+
+        JsonObjectRequest thumbsup_pl = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray result_array = response.getJSONArray("result");
+                    for (int i = 0; i < result_array.length(); i++) {
+                        JSONObject songObject = result_array.getJSONObject(i);
+                        String singer = songObject.getString("singer");
+                        String title = songObject.getString("musicName");
+                        String imgUrl = songObject.getString("imageUrl");
+
+                        Song song = new Song(title, singer, imgUrl);
+                        favList.add(i, song);
+                        Log.e("JsonParsing_thumb_up", "Singer : " + singer);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error getting response:", error.toString());
+            }
+        }
+        );
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        queue.add(thumbsup_pl);
+    }
+
+    public void set_weather_filter(int weather_idx){
+        String url = "https://dev.evertime.shop/playlist/weather/" + String.valueOf(weather_idx);
+        JsonObjectRequest weather_pl = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray result_array = response.getJSONArray("result");
+                    for (int i = 0; i < result_array.length(); i++) {
+
+                        JSONObject songObject = result_array.getJSONObject(i);
+                        String singer = songObject.getString("singer");
+                        String title = songObject.getString("musicName");
+                        String imgUrl = songObject.getString("imageUrl");
+
+                        Song song = new Song(title, singer, imgUrl);
+                        favList.add(i, song);
+                        Log.e("JsonParsing_weather", "Singer : " + singer);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error getting response:", error.toString());
+            }
+        }
+        );
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+        queue.add(weather_pl);
+    }
+    public void set_feeling_filter(int feeling_idx){
+        String url2 = "https://dev.evertime.shop/playlist/feeling/" + String.valueOf(feeling_idx);
+        JsonObjectRequest feeling_pl = new JsonObjectRequest(Request.Method.GET, url2, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray result_array = response.getJSONArray("result");
+                    for (int i = 0; i < result_array.length(); i++) {
+                        JSONObject songObject = result_array.getJSONObject(i);
+                        String singer = songObject.getString("singer");
+                        String title = songObject.getString("musicName");
+                        String imgUrl = songObject.getString("imageUrl");
+
+                        Song song = new Song(title, singer, imgUrl);
+                        favList.add(i, song);
+                        Log.e("JsonParsing_feeling", "Singer : " + singer);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error getting response:", error.toString());
+            }
+        }
+        );
+        RequestQueue queue2 = Volley.newRequestQueue(getActivity());
+        queue2.add(feeling_pl);
+    }
+
+
+
+
+
+
+    public void get_fiter_pl(int weather_idx, int feeling_idx) {
+        // 날씨필터X && 기분필터O   or    날씨필터O && 기분필터X    or   날씨필터O && 기분필터O
+        favList = new ArrayList<Song>();
+        if(weather_idx == 0){
+            set_weather_filter(weather_idx);
+        }
+        else if(feeling_idx == 0){
+            set_feeling_filter(feeling_idx);
+        }
+        else{
+            set_weather_filter(weather_idx);
+            set_feeling_filter(feeling_idx);
+        }
+    }
     public void get_weather_pl(int weather_idx){
         String url = "https://dev.evertime.shop/playlist/weather/" + String.valueOf(weather_idx);
 
@@ -137,7 +282,6 @@ public class PlaylistFrag extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         queue.add(weather_pl);
     }
-
     public void get_feeling_pl(int feel_idx){
         String url = "https://dev.evertime.shop/playlist/feeling/" + String.valueOf(feel_idx);
 
