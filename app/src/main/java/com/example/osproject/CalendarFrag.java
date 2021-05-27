@@ -37,21 +37,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CalendarFrag extends Fragment {
+
+    private static final String TAG = "CalendarFrag";
+
     private View view;
     private CalendarView music_calendar;
     private TextView text_curmonth;
     public int selectedmonth;
     public TextView text_nodata1;
-    public LinearLayout total_excited;
-    public LinearLayout total_happy;
-    public LinearLayout total_soso;
-    public LinearLayout total_sad;
-    public LinearLayout total_angry;
-    public LinearLayout monthly_excited;
-    public LinearLayout monthly_happy;
-    public LinearLayout monthly_soso;
-    public LinearLayout monthly_sad;
-    public LinearLayout monthly_angry;
+    public View total_excited;
+    public View total_happy;
+    public View total_soso;
+    public View total_sad;
+    public View total_angry;
+    public View monthly_excited;
+    public View monthly_happy;
+    public View monthly_soso;
+    public View monthly_sad;
+    public View monthly_angry;
 
     public double total_excited_value;
     public double total_happy_value;
@@ -63,9 +66,7 @@ public class CalendarFrag extends Fragment {
     public double monthly_soso_value;
     public double monthly_sad_value;
     public double monthly_angry_value;
-    CalendarFrag(){
 
-    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.calendar, container, false);
@@ -86,9 +87,10 @@ public class CalendarFrag extends Fragment {
         selectedmonth = Calendar.DAY_OF_MONTH;
         text_curmonth.setText(selectedmonth+"월");
 
-        getMonthlyData();
         getTotalData();
+        getMonthlyData();
         setGraph();
+
         music_calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
@@ -109,41 +111,6 @@ public class CalendarFrag extends Fragment {
         return view;
     }
 
-    public void getTotalData() {
-        String url = "https://dev.evertime.shop/feeling/totalchart";
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-
-        JsonObjectRequest objectRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            JSONObject result_object = response.getJSONObject("result");
-                            total_excited_value = result_object.getDouble("percentage1");
-                            total_happy_value = result_object.getDouble("percentage2");
-                            total_soso_value = result_object.getDouble("percentage3");
-                            total_sad_value = result_object.getDouble("percentage4");
-                            total_angry_value = result_object.getDouble("percentage5");
-                            Log.e("String Response:", response.toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Error getting response:", error.toString());
-                    }
-                }
-        );
-
-        requestQueue.add(objectRequest);
-    }
     public void getMonthlyData() {
         String url = "https://dev.evertime.shop/feeling/chart/"+Integer.toString(selectedmonth);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -179,6 +146,43 @@ public class CalendarFrag extends Fragment {
 
         requestQueue.add(objectRequest);
     }
+
+    public void getTotalData() {
+        String url = "https://dev.evertime.shop/feeling/totalchart";
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject result_object = response.getJSONObject("result");
+                            total_excited_value = result_object.getDouble("percentage1");
+                            total_happy_value = result_object.getDouble("percentage2");
+                            total_soso_value = result_object.getDouble("percentage3");
+                            total_sad_value = result_object.getDouble("percentage4");
+                            total_angry_value = result_object.getDouble("percentage5");
+                            Log.e("String Response:", response.toString());
+                            System.out.println(total_excited_value);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Error getting response:", error.toString());
+                    }
+                }
+        );
+
+        requestQueue.add(objectRequest);
+    }
+
 
     public void setGraph(){
         Resources r = getResources();

@@ -1,15 +1,10 @@
 package com.example.osproject;
 
-import android.accessibilityservice.AccessibilityService;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,15 +33,6 @@ import org.json.JSONObject;
 //import okhttp3.Request;
 //import okhttp3.Response;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.Instant;
-import java.util.concurrent.Executor;
-
-import static android.content.Context.LOCATION_SERVICE;
 
 // implements LocationListener
 public class WeatherFrag extends Fragment {
@@ -88,14 +72,13 @@ public class WeatherFrag extends Fragment {
         max_temp = (TextView)view.findViewById(R.id.mMax_TempTextView);
         min_temp = (TextView)view.findViewById(R.id.mMin_TempTextView);
         main_text = (TextView)view.findViewById(R.id.mMainTextView);
-        des_text = (TextView)view.findViewById(R.id.mDescriptionTextView);
 
         pic = (ImageView)view.findViewById(R.id.weather_pic);
 
         //날씨 기반 음악 추천
-        title = (TextView)view.findViewById(R.id.song_title);
-        singer = (TextView)view.findViewById(R.id.song_singer);
-        al_pic = (ImageView)view.findViewById(R.id.album_image);
+        title = (TextView)view.findViewById(R.id.song_title2);
+        singer = (TextView)view.findViewById(R.id.song_singer2);
+        al_pic = (ImageView)view.findViewById(R.id.album_image2);
 
         find_weather();
         //find_weatherbase_music();
@@ -135,10 +118,9 @@ public class WeatherFrag extends Fragment {
                     max_temp.setText(String.valueOf((int)(maxtemp-273.15)));
                     min_temp.setText(String.valueOf((int)(mintemp-273.15)));
                     main_text.setText(maintx);
-                    des_text.setText(desttx);
 
                     String icon = weather.getString("icon");
-                    loadIcon(icon);
+                    //loadIcon(icon);
                 }catch(JSONException e)
                 {
                     e.printStackTrace();

@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,14 +24,23 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 
 public class EmotionFrag extends Fragment {
     private View view;
@@ -40,6 +50,9 @@ public class EmotionFrag extends Fragment {
     private Button bt_select;
     private ImageButton bt_settings;
     private ImageView testImage;
+    private TextView song_title2;
+    private TextView song_singer2;
+    private ImageView album_image2;
 
     private Integer feelingId;
 
@@ -59,6 +72,10 @@ public class EmotionFrag extends Fragment {
         bt_select = view.findViewById(R.id.bt_select);
         testImage = view.findViewById(R.id.testImage);
 
+        song_title2 = view.findViewById(R.id.song_title2);
+        song_singer2 = view.findViewById(R.id.song_singer2);
+        album_image2 = view.findViewById(R.id.album_image2);
+
         //이미 선택되었을 경우 버튼 ENABLE = FALSE 처리
         if(((MainActivity)getActivity()).emotion_selected) {
             for (int i = 0; i < rg_emotions.getChildCount(); i++) {
@@ -69,7 +86,6 @@ public class EmotionFrag extends Fragment {
         rg_emotions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-
                 if (checkedId == R.id.rb_excited) feelingId = 1;
                 else if (checkedId == R.id.rb_happy) feelingId = 2;
                 else if (checkedId == R.id.rb_soso) feelingId = 3;
@@ -77,6 +93,7 @@ public class EmotionFrag extends Fragment {
                 else if (checkedId == R.id.rb_angry) feelingId = 5;
             }
         });
+
         //카메라로 기분 인식
         requestCamera();
         bt_camera.setOnClickListener(new View.OnClickListener(){
@@ -103,14 +120,67 @@ public class EmotionFrag extends Fragment {
                         ((MainActivity) getActivity()).emotion_selected = true;
                         rg_emotions.getChildAt(i).setEnabled(false);
                         postEmotionData();
+                        if(!((MainActivity) getActivity()).emotion_music_recom){
+                            //Thread th = new getEmotionData();
+                            //th.start();
+                        }
                     }
                 }
             }
         });
 
+        if(((MainActivity) getActivity()).emotion_music_recom){
+            song_title2.setText(((MainActivity) getActivity()).song_title2);
+            song_singer2.setText(((MainActivity) getActivity()).song_singer2);
+            if (((MainActivity) getActivity()).album_image2.equals("null") || ((MainActivity) getActivity()).album_image2.equals(""))
+                album_image2.setImageResource(R.drawable.ic_baseline_music_note_24);
+            else Glide.with(getActivity()).load(((MainActivity) getActivity()).album_image2).into(album_image2);
+        }
+
         return view;
     }
 
+    public class getEmotionData extends Thread{
+        public void run() {
+            String url = "https://dev.evertime.shop/feeling/music";
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
+            JsonObjectRequest objectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    url,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.e("String Response:", response.toString());
+                            try {
+                                ((MainActivity) getActivity()).emotion_music_recom = true;
+                                JSONArray arr = response.getJSONArray("result");
+                                JSONObject result = arr.getJSONObject(0);
+                                ((MainActivity) getActivity()).song_title2 = result.getString("musicName");
+                                ((MainActivity) getActivity()).song_singer2 = result.getString("singer");
+                                ((MainActivity) getActivity()).album_image2 = result.getString("imageUrl");
+                                song_title2.setText(result.getString("musicName"));
+                                song_singer2.setText(result.getString("singer"));
+                                String imageURL = result.getString("imageUrl");
+                                if (imageURL.equals("null") || imageURL.equals(""))
+                                    album_image2.setImageResource(R.drawable.ic_baseline_music_note_24);
+                                else Glide.with(getActivity()).load(imageURL).into(album_image2);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Error getemotiondata:", error.toString());
+                        }
+                    }
+            );
+            requestQueue.add(objectRequest);
+        }
+    }
 
     public void postEmotionData() {
         String url = "https://dev.evertime.shop/feeling/" + String.valueOf(feelingId);
@@ -129,7 +199,7 @@ public class EmotionFrag extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Error getting response:", error.toString());
+                        Log.e("Error postemotiondata:", error.toString());
                     }
                 }
         );
@@ -156,5 +226,4 @@ public class EmotionFrag extends Fragment {
             testImage.setImageBitmap(captureImage);
         }
     }
-
 }

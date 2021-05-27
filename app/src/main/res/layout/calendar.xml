@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
@@ -114,52 +115,46 @@
             android:layout_marginTop="10dp"
             android:text="기록이 없습니다" />
 
-        <LinearLayout
+        <View
             android:id="@+id/monthly_excited"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:background="#F1C5CF"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#F1C5CF" />
 
-        <LinearLayout
+        <View
             android:id="@+id/monthly_happy"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
-            android:background="#D4E477"
-            android:orientation="horizontal">
+            android:background="#D4E477" />
 
-        </LinearLayout>
-
-        <LinearLayout
+        <View
             android:id="@+id/monthly_soso"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
-            android:background="#FFE58E"
-            android:orientation="horizontal">
+            android:background="#FFE58E" />
 
-        </LinearLayout>
-
-        <LinearLayout
+        <View
             android:id="@+id/monthly_sad"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="210dp"
             android:layout_marginLeft="210dp"
-            android:background="#B2DFF8"
-            android:orientation="horizontal"></LinearLayout>
+            android:background="#B2DFF8" />
 
-        <LinearLayout
+        <View
             android:id="@+id/monthly_angry"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="280dp"
             android:layout_marginLeft="280dp"
-            android:background="#ED8E87"
-            android:orientation="horizontal" />
+            android:layout_weight="1"
+            android:background="#ED8E87" />
+
     </FrameLayout>
 
     <TextView
@@ -187,48 +182,44 @@
             android:layout_marginTop="10dp"
             android:text="기록이 없습니다" />
 
-        <LinearLayout
+        <View
             android:id="@+id/total_excited"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:background="#F1C5CF"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="#F1C5CF" />
 
-        <LinearLayout
+        <View
             android:id="@+id/total_happy"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
-            android:background="#D4E477"
-            android:orientation="horizontal"></LinearLayout>
+            android:background="#D4E477" />
 
-        <LinearLayout
+        <View
             android:id="@+id/total_soso"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="140dp"
             android:layout_marginLeft="140dp"
-            android:background="#FFE58E"
-            android:orientation="horizontal"></LinearLayout>
+            android:background="#FFE58E" />
 
-        <LinearLayout
+        <View
             android:id="@+id/total_sad"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="210dp"
             android:layout_marginLeft="210dp"
-            android:background="#B2DFF8"
-            android:orientation="horizontal"></LinearLayout>
+            android:background="#B2DFF8" />
 
-        <LinearLayout
+        <View
             android:id="@+id/total_angry"
             android:layout_width="70dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="280dp"
             android:layout_marginLeft="280dp"
-            android:background="#ED8E87"
-            android:orientation="horizontal"></LinearLayout>
+            android:background="#ED8E87" />
+
     </FrameLayout>
 
 </LinearLayout>

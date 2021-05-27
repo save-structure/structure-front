@@ -2,13 +2,26 @@ package com.example.osproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,14 +35,24 @@ public class MainActivity extends AppCompatActivity {
 
     public int type1 = 1, type2 = 1;
     public boolean emotion_selected = false;
+    public boolean emotion_music_recom = false;
+    public String song_title2;
+    public String song_singer2;
+    public String album_image2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView = findViewById(R.id.bottomNavi);
+        weather = new WeatherFrag();
+        emotion = new EmotionFrag();
+        calendar = new CalendarFrag();
+        playlist = new PlaylistFrag();
 
+        setFrag(0);         //첫 프래그먼트 화면 지정
+
+        bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -50,11 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        weather = new WeatherFrag();
-        emotion = new EmotionFrag();
-        calendar = new CalendarFrag();
-        playlist = new PlaylistFrag();
-        setFrag(0);         //첫 프래그먼트 화면 지정
+
     }
 
     //프래그먼트 교체가 일어나는 실행문
@@ -80,4 +99,5 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }
