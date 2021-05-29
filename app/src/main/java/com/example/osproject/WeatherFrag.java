@@ -1,16 +1,9 @@
 package com.example.osproject;
-import android.accessibilityservice.AccessibilityService;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +28,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
@@ -46,18 +38,9 @@ import org.json.JSONObject;
 //import okhttp3.Response;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.Executor;
-
-import static android.content.Context.LOCATION_SERVICE;
 
 // implements LocationListener
 public class WeatherFrag extends Fragment {
@@ -178,11 +161,22 @@ public class WeatherFrag extends Fragment {
         bt_select2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread find_weatherbase_music_th = new find_weatherbase_music();
-                find_weatherbase_music_th.start();
+                if(!((MainActivity) getActivity()).weather_music_recom){
+                    //Thread find_weatherbase_music_th = new find_weatherbase_music();
+                    //find_weatherbase_music_th.start();
+                }
                 //find_weatherbase_music();
             }
         });
+
+        if(((MainActivity) getActivity()).weather_music_recom){
+            song_title.setText(((MainActivity) getActivity()).song_title);
+            song_singer.setText(((MainActivity) getActivity()).song_singer);
+            if (((MainActivity) getActivity()).album_image.equals("null") || ((MainActivity) getActivity()).album_image.equals(""))
+                album_image.setImageResource(R.drawable.ic_baseline_music_note_24);
+            else Glide.with(getActivity()).load(((MainActivity) getActivity()).album_image).into(album_image);
+        }
+
         return view;
     }
 
@@ -259,12 +253,16 @@ public class WeatherFrag extends Fragment {
                         public void onResponse(JSONObject response) {
                             Log.e("String Response:", response.toString());
                             try {
+                                ((MainActivity) getActivity()).weather_music_recom = true;
                                 JSONObject result = response.getJSONObject("result");
                                 song_title.setText(result.getString("musicName"));
                                 if(song_title.length()>13) song_title.setTextSize(15);
                                 else song_title.setTextSize(20);
                                 song_singer.setText(result.getString("singer"));
                                 String imageURL = result.getString("imageUrl");
+                                ((MainActivity) getActivity()).song_title = result.getString("musicName");
+                                ((MainActivity) getActivity()).song_singer = result.getString("singer");
+                                ((MainActivity) getActivity()).album_image = result.getString("imageUrl");
                                 utube = result.getString("youtubeUrl");
                                 Log.e("find_weatherbase_music", "utube : " + utube);
                                 if(utube.equals("null")){          //utube url 이 null인 경우

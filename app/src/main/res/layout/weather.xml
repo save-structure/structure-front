@@ -207,7 +207,7 @@
 
 
             <ImageView
-                android:id="@+id/album_image2"
+                android:id="@+id/album_image"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="5dp"
@@ -235,7 +235,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/song_singer2"
+                android:id="@+id/song_singer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"

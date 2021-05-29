@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,9 +40,13 @@ public class MainActivity extends AppCompatActivity {
     public int type1 = 1, type2 = 1;
     public boolean emotion_selected = false;
     public boolean emotion_music_recom = false;
+    public boolean weather_music_recom = false;
     public String song_title2;
     public String song_singer2;
     public String album_image2;
+    public String song_title;
+    public String song_singer;
+    public String album_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
