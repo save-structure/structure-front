@@ -1,6 +1,7 @@
 package com.example.osproject;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.bumptech.glide.Glide;
+//import com.google.android.exoplayer2.ExoPlayerFactory;
+//import com.google.android.exoplayer2.SimpleExoPlayer;
+//import com.google.android.exoplayer2.source.MediaSource;
+//import com.google.android.exoplayer2.ui.PlayerView;
+//import com.google.android.exoplayer2.util.Util;
+import com.google.gson.JsonObject;
 import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
@@ -41,6 +48,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.Executor;
+
+import static android.content.Context.LOCATION_SERVICE;
+//import com.google.android.exoplayer2.ext.ima.ImaAdsLoader;
 
 // implements LocationListener
 public class WeatherFrag extends Fragment {
@@ -67,6 +78,8 @@ public class WeatherFrag extends Fragment {
 
     //좋아요, 싫어요 버튼
     Button t_up, t_down;
+    Button t_up_selected;
+    int bb = 0;
 
     // 현재시간 불러오기
     long curTime = System.currentTimeMillis();
@@ -84,6 +97,78 @@ public class WeatherFrag extends Fragment {
     String day = sdf_d.format(date);
 
     int recomId = 0;
+    int song_id;
+
+    // 뮤직 재생
+//    PlayerView playerView;
+//    SimpleExoPlayer player;
+//    boolean playWhenReady = true;
+//    int currentWindow = 0;
+//    long playbackPosition;
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        if(Util.SDK_INT >= 24)
+//            initPlayer();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        if(Util.SDK_INT>=24)
+//            releasePlayer();
+//        super.onStop();
+//    }
+//
+//    private void releasePlayer() {
+//        if(player != null)
+//        {
+//            playWhenReady= player.getPlayWhenReady();
+//            playbackPosition = player.getCurrentPosition();
+//            currentWindow = player.getCurrentWindowIndex();
+//            player.release();
+//            player = null;
+//
+//        }
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//
+//        if((Util.SDK_INT <24 || player == null))
+//        {
+//            initPlayer();
+//            hideSystemUI();
+//        }
+//    }
+//
+//    private void hideSystemUI() {
+//        playerView.setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LOW_PROFILE |
+//                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+//                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        );
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        if(Util.SDK_INT < 24)
+//            releasePlayer();
+//        super.onPause();
+//    }
+
+    //    private PlayerView playerView;
+//    private SimpleExoPlayer player;
+//    private ImaAdsLoader adsLoader;
+//    private PlayerView exoPlayerView;
+//    private SimpleExoPlayer player;
+//
+//    private Boolean playWhenReady = true;
+//    private int currentWindow = 0;
+//    private Long playbackPosition = 0L;
 
 //    LocationManager locationManager;
 //    boolean isGPSEnabled = false;
@@ -111,9 +196,9 @@ public class WeatherFrag extends Fragment {
 
         //날씨 위젯 배경색 시간대 별로 달라지게
         FrameLayout bg_color  = (FrameLayout) view.findViewById(R.id.background_color);
-        if(formatDate.compareTo("06")>0 && formatDate.compareTo("10")<0)
+        if(formatDate.compareTo("19")>0 && formatDate.compareTo("23")<0)
             bg_color.setBackgroundResource(R.drawable.morning);
-        else if(formatDate.compareTo("10")>0 && formatDate.compareTo("19")<0)
+        else if(formatDate.compareTo("23")>0 && formatDate.compareTo("08")<0)
             bg_color.setBackgroundResource(R.drawable.day);
         else
             bg_color.setBackgroundResource(R.drawable.round);
@@ -134,23 +219,41 @@ public class WeatherFrag extends Fragment {
         play_b.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Thread play_music_th = new play_music();
-                play_music_th.start();
+//                Thread play_music_th = new play_music();
+//                play_music_th.start();
             }
         });
 
         //좋아요, 싫어요
         t_up = (Button)view.findViewById(R.id.thumbs_up);
         t_down = (Button)view.findViewById(R.id.thumbs_down);
+//        t_up_selected =(Button)view.findViewById(R.id.thumbs_up_selected);
         t_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                Thread postupdata_th = new postUpData();
-//                postupdata_th.start();
                 postUpData();
             }
         });
+//        if(bb == 0 ) {
+//            t_up.setVisibility(t_up.VISIBLE);
+//            t_up_selected.setVisibility(t_up_selected.INVISIBLE);
+//            t_up.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    postUpData();
+//                }
+//            });
+//        }
+//        else{
+//            t_up.setVisibility(t_up.INVISIBLE);
+//            t_up_selected.setVisibility(t_up_selected.VISIBLE);
+//            t_up_selected.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    postUpData();
+//                }
+//            });
+//        }
         t_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,6 +272,7 @@ public class WeatherFrag extends Fragment {
             }
         });
 
+
         if(((MainActivity) getActivity()).weather_music_recom){
             song_title.setText(((MainActivity) getActivity()).song_title);
             song_singer.setText(((MainActivity) getActivity()).song_singer);
@@ -176,9 +280,26 @@ public class WeatherFrag extends Fragment {
                 album_image.setImageResource(R.drawable.ic_baseline_music_note_24);
             else Glide.with(getActivity()).load(((MainActivity) getActivity()).album_image).into(album_image);
         }
+//        playerView = (PlayerView) view.findViewById(R.id.video_view);
+//        initPlayer();
+
 
         return view;
     }
+
+//    private void initPlayer() {
+//        player = new SimpleExoPlayer.Builder(getActivity()).build();
+//        playerView.setPlayer(player);
+//
+//        playYoutubeVideo("utube");
+//    }
+//
+//    private void playYoutubeVideo(String utube) {
+//        new YouTubeExtractor(this)
+//        {
+//
+//        }.extract(utube, false, true);
+//    }
 
     public class find_weather extends Thread
     {
@@ -271,7 +392,7 @@ public class WeatherFrag extends Fragment {
 //                                    return;
                                 }
 
-//                                song_id = result.getInt("musicId");
+                                song_id = result.getInt("musicId");
                                 if (imageURL.equals("null") || imageURL.equals(""))
                                     album_image.setImageResource(R.drawable.ic_baseline_music_note_24);
                                 else Glide.with(getActivity()).load(imageURL).into(album_image);
@@ -330,13 +451,18 @@ public class WeatherFrag extends Fragment {
 
     public void postUpData() {
 
-//            Thread get_recomId_th = new get_recomId();
-//            get_recomId_th.start();
-            get_recomId();
+            String url = "https://dev.evertime.shop/playlist/like/" + String.valueOf(song_id);
 
-            Log.e("postupData :", "recomId :"+ recomId);
-
-            String url = "https://dev.evertime.shop/playlist/like/" + String.valueOf(recomId);
+//            if(bb == 0 ) {
+//                t_up.setVisibility(t_up.INVISIBLE);
+//                t_up_selected.setVisibility(t_up_selected.VISIBLE);
+//                bb=1;
+//            }
+//            else{
+//                t_up.setVisibility(t_up.VISIBLE);
+//                t_up_selected.setVisibility(t_up_selected.INVISIBLE);
+//                bb=0;
+//            }
 
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
             JsonObjectRequest objectRequest = new JsonObjectRequest(
@@ -360,52 +486,6 @@ public class WeatherFrag extends Fragment {
 
     }
 
-    public class play_music extends Thread{
-        MediaPlayer mediaPlayer = new MediaPlayer();
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        public void run(){
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            try {
-                mediaPlayer.setDataSource(utube);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                mediaPlayer.prepare();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            mediaPlayer.start();
-//            try {
-//                mediaPlayer.setDataSource(utube);
-//                mediaPlayer.setOnPreparedListener((MediaPlayer.OnPreparedListener) getActivity());
-//                mediaPlayer.prepareAsync();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            mediaPlayer.start();
-
-
-
-//            mediaPlayer.setAudioAttributes(
-//                    new AudioAttributes
-//                            .Builder()
-//                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                            .build());
-//            try {
-//                mediaPlayer.setDataSource(utube);
-//                mediaPlayer.setOnPreparedListener();
-//                mediaPlayer.prepareAsync();
-//
-//                public void onPrepared(MediaPlayer player) {
-//                    player.start();
-//                }
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            mediaPlayer.start();
-        }
-    }
 }
 
 

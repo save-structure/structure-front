@@ -255,6 +255,13 @@
                 android:backgroundTint="@null"
                 android:scaleType="fitCenter"></Button>
 
+<!--            <com.google.android.exoplayer2.ui.PlayerView-->
+<!--                android:id="@+id/video_view"-->
+<!--                android:layout_width="110dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_marginTop="80dp"-->
+<!--                android:layout_marginLeft="140dp"/>-->
+
 
         </FrameLayout>
 
@@ -273,6 +280,15 @@
             android:layout_marginLeft="285dp"
             android:layout_marginTop="250dp"
             android:background="@drawable/ic_baseline_thumb_up_24"></Button>
+
+
+<!--        <Button-->
+<!--            android:id="@+id/thumbs_up_selected"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginLeft="280dp"-->
+<!--            android:layout_marginTop="245dp"-->
+<!--            android:background="@drawable/ic_baseline_thumb_up_24_selected"></Button>-->
 
         <Button
             android:id="@+id/thumbs_down"
