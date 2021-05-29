@@ -27,6 +27,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -65,5 +68,16 @@ dependencies {
 
     //위에 multidex+이거 -> 메쏘드너무많이써서나는에러
     implementation 'com.android.support:multidex:1.0.3'
+
+//    def exoplayer_version = '2.9.3'
+//    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+//    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+//    implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
+
+    //ExoPlayer
+//    implementation 'com.google.android.exoplayer:exoplayer:2.13.2'
+    //YoutubeExtractor
+//    implementation 'com.github.HarrigerHarald:android-youtubeExtractor:v2.1.0'
+
 
 }

@@ -42,7 +42,7 @@
         android:background ="#B5B8BA"
         android:layout_weight="1"
         android:scrollbarSize="5dp"
-        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:scrollbarThumbVertical="@android:color/white"
         android:scrollbars="vertical" />
 
 

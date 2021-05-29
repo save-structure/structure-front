@@ -53,6 +53,12 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
         title.setText(song.getTitle());
 
         ImageView album_img = holder.album_img;
+
+        String img_url = song.getImg_url();
+        if (img_url.equals("null") || img_url.equals(""))
+            album_img.setImageResource(R.drawable.ic_baseline_music_note_24);
+        else Glide.with(context).load(img_url).into(album_img);
+
         Glide.with(context).load(song.getImg_url()).into(album_img);
     }
 
