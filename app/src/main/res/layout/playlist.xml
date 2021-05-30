@@ -8,13 +8,17 @@
 
 <!--    // refresh할 layout에 id 할당-->
 <!--    //android:id="@+id/swipe_refresh_layout"-->
-<!--    // android:background="@color/design_default_color_on_primary" 사이즈 확인-->
+<!--      android:background="@color/design_default_color_on_primary" 사이즈 확인-->
 
     <!--    <LinearLayout-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"/>-->
     <!--    -->
     <!--    </LinearLayout>-->
+
+
+    <!--    android:layoutscrollbarFadDuration="0"-->
+<!--    android:layout_id="@+id/rv"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,35 +29,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Playlist"
-            android:textColor="#808080"
+            android:fontFamily="@font/cafesurround"
+            android:text="My Playlist"
+            android:textColor="#9575CD"
             android:textSize="23dp" />
 
     </LinearLayout>
-
-
-<!--    android:layoutscrollbarFadDuration="0"-->
-<!--    android:layout_id="@+id/rv"-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background ="#B5B8BA"
         android:layout_weight="1"
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/white"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="날씨 필터"
-        android:textColor="#808080"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="15dp" />
+
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
@@ -75,7 +69,8 @@
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.25">
+                app:layout_constraintVertical_bias="0.25"
+                >
 
                 <RadioButton
                     android:id="@+id/rb_no_noweather"
@@ -143,8 +138,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="기분 필터"
-        android:layout_marginVertical="3dp"
+
+        android:layout_marginVertical="1dp"
         android:layout_marginLeft="20dp"
         android:textColor="#808080"
         android:textSize="15dp" />
