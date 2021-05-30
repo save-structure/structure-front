@@ -62,7 +62,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_baseline_music_note_24" />
 
             <TextView
                 android:id="@+id/text_weather_title"
@@ -136,7 +136,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_baseline_music_note_24" />
 
             <TextView
                 android:id="@+id/text_emotion_title"
