@@ -14,6 +14,7 @@
         android:layout_marginTop="40dp"
         android:layout_weight="1"
         android:text="Music Calendar"
+        android:fontFamily="@font/cafesurround"
         android:textSize="25sp" />
 
     <LinearLayout

@@ -104,7 +104,7 @@ public class WeatherFrag extends Fragment {
         else if(formatDate.compareTo("23")>0 && formatDate.compareTo("08")<0)
             bg_color.setBackgroundResource(R.drawable.day);
         else
-            bg_color.setBackgroundResource(R.drawable.round);
+            bg_color.setBackgroundResource(R.drawable.night);
 
         //날씨 기반 음악 추천
         song_title = (TextView)view.findViewById(R.id.song_title);

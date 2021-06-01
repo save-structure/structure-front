@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weather Based Recommendation"
+            android:text="오늘의 날씨는"
             android:textColor="#808080"
-            android:textSize="23dp" />
+            android:textSize="23dp"
+            android:fontFamily="@font/cafesurround"/>
 
     </LinearLayout>
 
@@ -291,7 +292,4 @@
 
 
     </FrameLayout>
-
-
-
 </FrameLayout>

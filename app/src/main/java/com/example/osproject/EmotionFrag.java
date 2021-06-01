@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -134,7 +135,7 @@ public class EmotionFrag extends Fragment {
 
     private Integer feelingId;
 
-    //여기부터카메라
+    /*
     private static final String CLOUD_VISION_API_KEY = "";
     public static final String FILE_NAME = "temp.jpg";
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
@@ -150,6 +151,7 @@ public class EmotionFrag extends Fragment {
 
     private TextView mImageDetails;
     private ImageView mMainImage;
+*/
 
     long curTime = System.currentTimeMillis();
     Date date = new Date(curTime);
@@ -160,6 +162,10 @@ public class EmotionFrag extends Fragment {
     String month = sdf_m.format(date);
     String day = sdf_d.format(date);
     Integer musicId = 0;
+
+    //네이버API
+    String currentPhotoPath;
+    private static final int IMAGE_REQUEST = 1;
 
     @Nullable
     @Override
@@ -175,7 +181,7 @@ public class EmotionFrag extends Fragment {
         bt_camera = view.findViewById(R.id.bt_camera);
         bt_settings = view.findViewById(R.id.bt_settings);
         bt_select = view.findViewById(R.id.bt_select);
-        testImage = view.findViewById(R.id.testImage);
+        //testImage = view.findViewById(R.id.testImage);
         bt_thumbup2 = view.findViewById(R.id.bt_thumbup2);
 
         song_title2 = view.findViewById(R.id.song_title2);
@@ -200,6 +206,17 @@ public class EmotionFrag extends Fragment {
             }
         });
 
+        //네이버API
+        requestCamera();
+        bt_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                captureImage();
+            }
+        });
+
+        //인공지능 처음버전
+        /*
         //인공지능카메라연결
         bt_camera.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder((MainActivity)getActivity());
@@ -209,9 +226,11 @@ public class EmotionFrag extends Fragment {
                     .setNegativeButton(R.string.dialog_select_camera, (dialog, which) -> startCamera());
             builder.create().show();
         });
+*/
 
-        mImageDetails = view.findViewById(R.id.image_details);
-        mMainImage = view.findViewById(R.id.testImage);
+
+        //mImageDetails = view.findViewById(R.id.image_details);
+        //mMainImage = view.findViewById(R.id.testImage);
 
         //기분 설정 창
         bt_settings.setOnClickListener(new View.OnClickListener() {
@@ -238,7 +257,7 @@ public class EmotionFrag extends Fragment {
                 }
             }
         });
-
+        //이미 추천받았을 시 초기화
         if(((MainActivity) getActivity()).emotion_music_recom){
             song_title2.setText(((MainActivity) getActivity()).song_title2);
             song_singer2.setText(((MainActivity) getActivity()).song_singer2);
@@ -246,6 +265,7 @@ public class EmotionFrag extends Fragment {
                 album_image2.setImageResource(R.drawable.ic_baseline_music_note_24);
             else Glide.with(getActivity()).load(((MainActivity) getActivity()).album_image2).into(album_image2);
         }
+        //좋아요버튼
         bt_thumbup2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,6 +275,143 @@ public class EmotionFrag extends Fragment {
 
         return view;
     }
+
+    class getAPI extends Thread{
+        @Override
+        public void run(){
+            StringBuffer reqStr = new StringBuffer();
+            String clientId = "";//애플리케이션 클라이언트 아이디값";
+            String clientSecret = "";//애플리케이션 클라이언트 시크릿값";
+
+            try {
+                String paramName = "image"; // 파라미터명은 image로 지정
+                String imgFile = currentPhotoPath;
+                File uploadFile = new File(imgFile);
+                String apiURL = "https://naveropenapi.apigw.ntruss.com/vision/v1/face"; // 얼굴 감지
+                URL url = new URL(apiURL);
+                HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                con.setUseCaches(false);
+                con.setDoOutput(true);
+                con.setDoInput(true);
+                // multipart request
+                String boundary = "---" + System.currentTimeMillis() + "---";
+                con.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+                con.setRequestProperty("X-NCP-APIGW-API-KEY-ID", clientId);
+                con.setRequestProperty("X-NCP-APIGW-API-KEY", clientSecret);
+                OutputStream outputStream = con.getOutputStream();
+                PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true);
+                String LINE_FEED = "\r\n";
+                // file 추가
+                String fileName = uploadFile.getName();
+                writer.append("--" + boundary).append(LINE_FEED);
+                writer.append("Content-Disposition: form-data; name=\"" + paramName + "\"; filename=\"" + fileName + "\"").append(LINE_FEED);
+                writer.append("Content-Type: "  + URLConnection.guessContentTypeFromName(fileName)).append(LINE_FEED);
+                writer.append(LINE_FEED);
+                writer.flush();
+                FileInputStream inputStream = new FileInputStream(uploadFile);
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                outputStream.flush();
+                inputStream.close();
+                writer.append(LINE_FEED).flush();
+                writer.append("--" + boundary + "--").append(LINE_FEED);
+                writer.close();
+                BufferedReader br = null;
+                int responseCode = con.getResponseCode();
+                if(responseCode==200) { // 정상 호출
+                    br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                } else {  // 오류 발생
+                    System.out.println("error!!!!!!! responseCode= " + responseCode);
+                    br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                }
+                String inputLine;
+                if(br != null) {
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = br.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    br.close();
+                    System.out.println(response.toString());
+                } else {
+                    System.out.println("error !!!");
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+
+    }
+
+    void requestCamera(){
+        if(ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{
+                            Manifest.permission.CAMERA
+                    },
+                    100);
+        }
+    }
+
+    public void captureImage() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(cameraIntent.resolveActivity(getActivity().getPackageManager())!=null){
+            File imageFile = null;
+            try {
+                imageFile = createImageFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(imageFile!=null){
+                Uri imageUri = FileProvider.getUriForFile(getActivity(),"com.example.android.provider",imageFile);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
+                startActivityForResult(cameraIntent,IMAGE_REQUEST);
+            }
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_REQUEST) {
+            Log.e("filepath:",currentPhotoPath);
+            File f = new File(currentPhotoPath);
+
+            if(f.exists()) {
+                Bitmap myBitmap = BitmapFactory.decodeFile(f.getPath());
+                ImageView testImage = view.findViewById(R.id.testImage);
+                testImage.setImageBitmap(myBitmap);
+            }
+            Thread th = new getAPI();
+            th.start();
+        }
+    }
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        TextView text = view.findViewById(R.id.image_details);
+        text.setText(currentPhotoPath);
+
+        return image;
+    }
+
+
+
 
     public void postPlaylistAdd() {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -353,28 +510,8 @@ public class EmotionFrag extends Fragment {
 
         requestQueue.add(objectRequest);
     }
-/*
-    void requestCamera(){
-        if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(),
-                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{
-                            Manifest.permission.CAMERA
-                    },
-                    100);
-        }
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 100){
-           //캡쳐화면 가져오기
-            Bitmap captureImage = (Bitmap) data.getExtras().get("data");
-            testImage.setImageBitmap(captureImage);
-        }
-    }
- */
-
+    /*
     public void startGalleryChooser() {
         if (PermissionUtils.requestPermission(getActivity(), GALLERY_PERMISSIONS_REQUEST, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Intent intent = new Intent();
@@ -462,10 +599,11 @@ public class EmotionFrag extends Fragment {
 
         VisionRequestInitializer requestInitializer =
                 new VisionRequestInitializer(CLOUD_VISION_API_KEY) {
-                    /**
-                     * We override this so we can inject important identifying fields into the HTTP
-                     * headers. This enables use of a restricted cloud platform API key.
+
+                     // We override this so we can inject important identifying fields into the HTTP
+                     // headers. This enables use of a restricted cloud platform API key.
                      */
+    /*
                     @Override
                     protected void initializeVisionRequest(VisionRequest<?> visionRequest)
                             throws IOException {
@@ -606,4 +744,5 @@ public class EmotionFrag extends Fragment {
 
         return message.toString();
     }
+    */
 }
