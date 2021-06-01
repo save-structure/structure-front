@@ -90,7 +90,9 @@
         android:id="@+id/bt_OK2"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:stateListAnimator="@null"
         android:text="OK"
-        app:backgroundTint="#00FFFFFF" />
+        android:textColor="#595959"
+        app:backgroundTint="#C9BED3" />
 
 </LinearLayout>

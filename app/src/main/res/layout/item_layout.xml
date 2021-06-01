@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <ImageView
-        android:id="@+id/play_butt"
+        android:id="@+id/play_butt1"
         android:layout_width="32dp"
         android:layout_height="30dp"
         android:layout_marginStart="224dp"

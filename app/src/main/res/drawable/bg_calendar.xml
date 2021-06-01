@@ -5,6 +5,5 @@
         />
     <solid
         android:color="#C9BED3"
-        android:background="@android:color/transparent"
         />
 </shape>

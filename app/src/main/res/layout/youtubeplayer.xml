@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="370dp"
+    android:layout_height="300dp"
+    android:background="@drawable/ic_tv"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="330dp"
+        android:layout_height="203dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="35dp"
+        android:layout_weight="1"
+        android:background="@drawable/round4"
+        android:paddingTop="6dp">
+
+        <view
+            android:id="@+id/youtubePlay"
+            class="com.google.android.youtube.player.YouTubePlayerView"
+            android:layout_width="322dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1" />
+
+    </FrameLayout>
+
+</LinearLayout>

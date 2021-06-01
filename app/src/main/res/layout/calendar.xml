@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
@@ -11,11 +10,11 @@
         android:id="@+id/text_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_weight="1"
-        android:text="Music Calendar"
         android:fontFamily="@font/cafesurround"
-        android:textSize="25sp" />
+        android:text="Music Calendar"
+        android:textSize="25dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -37,7 +36,7 @@
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:orientation="horizontal">
 
         <TextView
@@ -46,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="*월"
+            android:textColor="#595959"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -103,7 +103,7 @@
     <FrameLayout
         android:id="@+id/graph_monthly"
         android:layout_width="350dp"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1">
 
@@ -153,7 +153,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="280dp"
             android:layout_marginLeft="280dp"
-            android:layout_weight="1"
             android:background="#ED8E87" />
 
     </FrameLayout>
@@ -165,12 +164,13 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:text="전체"
+        android:textColor="#595959"
         android:textSize="20sp" />
 
     <FrameLayout
         android:id="@+id/graph_total"
         android:layout_width="350dp"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1">
 

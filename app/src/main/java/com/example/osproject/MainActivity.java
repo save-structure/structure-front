@@ -2,30 +2,12 @@ package com.example.osproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,15 +20,22 @@ public class MainActivity extends AppCompatActivity {
     private PlaylistFrag playlist;
 
     public int type1 = 1, type2 = 1;
+
+    public boolean camera_clicked = false;
     public boolean emotion_selected = false;
     public boolean emotion_music_recom = false;
     public boolean weather_music_recom = false;
+    public boolean weather_like = false;
+    public boolean emotion_like = false;
     public String song_title2;
     public String song_singer2;
     public String album_image2;
     public String song_title;
     public String song_singer;
     public String album_image;
+    public String youtube1;
+    public String youtube2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

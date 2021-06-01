@@ -35,8 +35,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
             </intent-filter>
-
         </activity>
+        <activity android:name=".YouTubePlayerFrag"
+            android:theme="@style/MyTheme.noTitle.Dialog"> </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.provider"
@@ -48,5 +49,9 @@
         </provider>
 
     </application>
-
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 </manifest>
