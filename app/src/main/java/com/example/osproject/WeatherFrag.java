@@ -1,13 +1,10 @@
 package com.example.osproject;
-<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Build;
-=======
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
->>>>>>> Boeun
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -31,36 +29,16 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.bumptech.glide.Glide;
-<<<<<<< HEAD
-=======
-//import com.google.android.exoplayer2.ExoPlayerFactory;
-//import com.google.android.exoplayer2.SimpleExoPlayer;
-//import com.google.android.exoplayer2.source.MediaSource;
-//import com.google.android.exoplayer2.ui.PlayerView;
-//import com.google.android.exoplayer2.util.Util;
->>>>>>> Boeun
 import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-=======
-//import okhttp3.Request;
-//import okhttp3.Response;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-//import com.google.android.exoplayer2.ext.ima.ImaAdsLoader;
-
-// implements LocationListener
->>>>>>> Boeun
 public class WeatherFrag extends Fragment {
     private View view;
     RequestQueue queue;
@@ -111,91 +89,8 @@ public class WeatherFrag extends Fragment {
     int recomId = 0;
     int song_id;
 
-<<<<<<< HEAD
     Intent intent;
-=======
-    // 뮤직 재생
-//    PlayerView playerView;
-//    SimpleExoPlayer player;
-//    boolean playWhenReady = true;
-//    int currentWindow = 0;
-//    long playbackPosition;
-//
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        if(Util.SDK_INT >= 24)
-//            initPlayer();
-//    }
-//
-//    @Override
-//    public void onStop() {
-//        if(Util.SDK_INT>=24)
-//            releasePlayer();
-//        super.onStop();
-//    }
-//
-//    private void releasePlayer() {
-//        if(player != null)
-//        {
-//            playWhenReady= player.getPlayWhenReady();
-//            playbackPosition = player.getCurrentPosition();
-//            currentWindow = player.getCurrentWindowIndex();
-//            player.release();
-//            player = null;
-//
-//        }
-//    }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//
-//        if((Util.SDK_INT <24 || player == null))
-//        {
-//            initPlayer();
-//            hideSystemUI();
-//        }
-//    }
-//
-//    private void hideSystemUI() {
-//        playerView.setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LOW_PROFILE |
-//                        View.SYSTEM_UI_FLAG_FULLSCREEN |
-//                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//        );
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        if(Util.SDK_INT < 24)
-//            releasePlayer();
-//        super.onPause();
-//    }
 
-    //    private PlayerView playerView;
-//    private SimpleExoPlayer player;
-//    private ImaAdsLoader adsLoader;
-//    private PlayerView exoPlayerView;
-//    private SimpleExoPlayer player;
-//
-//    private Boolean playWhenReady = true;
-//    private int currentWindow = 0;
-//    private Long playbackPosition = 0L;
-
-    LocationManager locationManager;
-    boolean isGPSEnabled = false;
-    boolean isNetworkEnabled = false;
-    boolean isGetLocation = false;
-    Location location;
-    double lat; // 위도
-    double lon; // 경도
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1000;
-    private static final long MIN_TIME_BW_UPDATES = 1000*60*1;
-    String icon = "";
->>>>>>> Boeun
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -232,24 +127,6 @@ public class WeatherFrag extends Fragment {
         Thread find_weather_th = new find_weather();
         find_weather_th.start();
 
-<<<<<<< HEAD
-         //재생버튼 노래 재생
-        play_b = view.findViewById(R.id.play_butt);
-        play_b.setOnClickListener(new View.OnClickListener(){
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),YouTubePlayerFrag.class);
-                startActivityForResult(intent,1);
-            }
-        });
-
-        // 좋아요, 싫어요
-        t_up = (Button)view.findViewById(R.id.thumbs_up);
-        t_down = (Button)view.findViewById(R.id.thumbs_down);
-
-        t_up.setOnClickListener(new View.OnClickListener() {
-=======
         //플레이리스트 추가
 
         bt_like = view.findViewById(R.id.bt_like);
@@ -268,13 +145,11 @@ public class WeatherFrag extends Fragment {
                     ((MainActivity)getActivity()).weather_like = false;
                 }
                 postUpData();
-
             }
         });
          //재생버튼 노래 재생
         play_b = (Button)view.findViewById(R.id.play_butt1);
         play_b.setOnClickListener(new View.OnClickListener(){
->>>>>>> Boeun
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),YouTubePlayerFrag.class);
@@ -283,61 +158,21 @@ public class WeatherFrag extends Fragment {
                 startActivityForResult(intent,2);
             }
         });
-<<<<<<< HEAD
-        t_down.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                return;
-            }
-        });
-
-=======
 
         addmusic1 = view.findViewById(R.id.addmusic1);
 
-
-
-//        if(bb == 0 ) {
-//            t_up.setVisibility(t_up.VISIBLE);
-//            t_up_selected.setVisibility(t_up_selected.INVISIBLE);
-//            t_up.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    postUpData();
-//                }
-//            });
-//        }
-//        else{
-//            t_up.setVisibility(t_up.INVISIBLE);
-//            t_up_selected.setVisibility(t_up_selected.VISIBLE);
-//            t_up_selected.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    postUpData();
-//                }
-//            });
-//        }
->>>>>>> Boeun
         bt_select2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!((MainActivity) getActivity()).weather_music_recom){
                     Thread find_weatherbase_music_th = new find_weatherbase_music();
                     find_weatherbase_music_th.start();
-<<<<<<< HEAD
 
-                }
-                new find_weatherbase_music();
-            }
-        });
-
-=======
                 }
             }
         });
 
         //이미 추천받았을 시 초기화
->>>>>>> Boeun
         if(((MainActivity) getActivity()).weather_music_recom){
             player_frame1.setBackgroundResource(R.drawable.round3);
             song_title.setVisibility(View.VISIBLE);
@@ -370,25 +205,7 @@ public class WeatherFrag extends Fragment {
         }
         return view;
     }
-<<<<<<< HEAD
-=======
 
-
-//    private void initPlayer() {
-//        player = new SimpleExoPlayer.Builder(getActivity()).build();
-//        playerView.setPlayer(player);
-//
-//        playYoutubeVideo("utube");
-//    }
-//
-//    private void playYoutubeVideo(String utube) {
-//        new YouTubeExtractor(this)
-//        {
-//
-//        }.extract(utube, false, true);
-//    }
-
->>>>>>> Boeun
     public class find_weather extends Thread
     {
         public void run() {
@@ -418,7 +235,7 @@ public class WeatherFrag extends Fragment {
                         max_temp.setText(String.valueOf((int) (maxtemp - 273.15)));
                         min_temp.setText(String.valueOf((int) (mintemp - 273.15)));
                         main_text.setText(maintx);
-                        icon = weather.getString("icon");
+                        String icon = weather.getString("icon");
                         if(!icon.equals("null"))
                             loadIcon(icon);
                     } catch (JSONException e) {
@@ -469,29 +286,17 @@ public class WeatherFrag extends Fragment {
                                 ((MainActivity) getActivity()).album_image = result.getString("imageUrl");
 
                                 utube = result.getString("youtubeUrl");
-<<<<<<< HEAD
-
-                                int idx = utube.indexOf("=");
-                                ptube = utube.substring(idx + 1);
-                                Log.e("ptube", " : " + ptube);
-
-=======
                                 int idx = utube.indexOf("=");
                                 ((MainActivity)getActivity()).youtube1 = utube.substring(idx + 1);
->>>>>>> Boeun
                                 Log.e("find_weatherbase_music", "utube : " + utube);
                                 if(utube.equals("null")){          //utube url 이 null인 경우
                                     play_b.setVisibility(play_b.INVISIBLE);
                                     text_nomusic3.setVisibility(text_nomusic3.VISIBLE);
-<<<<<<< HEAD
-=======
                                 }
                                 else{
                                     play_b.setVisibility(play_b.VISIBLE);
                                     text_nomusic3.setVisibility(text_nomusic3.INVISIBLE);
->>>>>>> Boeun
                                 }
-
                                 song_id = result.getInt("musicId");
                                 if (imageURL.equals("null") || imageURL.equals(""))
                                     album_image.setImageResource(R.drawable.ic_baseline_music_note_24);

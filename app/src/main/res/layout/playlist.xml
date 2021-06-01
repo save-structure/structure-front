@@ -2,19 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
-    <!--    // refresh할 layout에 id 할당-->
-    <!--    //android:id="@+id/swipe_refresh_layout"-->
-    <!--    // android:background="@color/design_default_color_on_primary" 사이즈 확인-->
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"/>-->
-    <!--    -->
-    <!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,13 +21,6 @@
     </LinearLayout>
 
 
-    <!--    android:layoutscrollbarFadDuration="0"-->
-    <!--    android:layout_id="@+id/rv"-->
-    <!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-    <!--        android:id="@+id/swipeRefreshLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="449dp">-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
@@ -48,9 +30,6 @@
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/white"
         android:scrollbars="vertical"/>
-    <!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="36dp">

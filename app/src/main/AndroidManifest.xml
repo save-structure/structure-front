@@ -36,12 +36,9 @@
                 <action android:name="android.intent.action.MAIN"></action>
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".YouTubePlayerFrag"> </activity>
-=======
+
         <activity android:name=".YouTubePlayerFrag"
             android:theme="@style/MyTheme.noTitle.Dialog"> </activity>
->>>>>>> Boeun
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.provider"
@@ -58,8 +55,4 @@
             <action android:name="com.google.android.youtube.api.service.START" />
         </intent>
     </queries>
-<<<<<<< HEAD
-
-=======
->>>>>>> Boeun
 </manifest>
