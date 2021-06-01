@@ -101,6 +101,8 @@ public class EmotionFrag extends Fragment {
         if(((MainActivity)getActivity()).camera_clicked){
             Log.e("camera ","already clicked");
             bt_camera.setImageResource(R.drawable.ic_camera_selected);
+        }else{
+            bt_camera.setImageResource(R.drawable.ic_camera);
         }
 
         //이미 선택되었을 경우 버튼 ENABLE = FALSE 처리
@@ -157,7 +159,8 @@ public class EmotionFrag extends Fragment {
         bt_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!((MainActivity) getActivity()).emotion_selected) {
+                if(!((MainActivity) getActivity()).emotion_selected &&  //선택 아직 x || 버튼을 눌렀거나 카메라를 찍었거나
+                        (rg_emotions.getCheckedRadioButtonId()!=-1||((MainActivity)getActivity()).camera_clicked)) {
                     ((MainActivity) getActivity()).emotion_selected = true;
                     for (int i = 0; i < rg_emotions.getChildCount(); i++) {
                         rg_emotions.getChildAt(i).setEnabled(false);
@@ -285,8 +288,11 @@ public class EmotionFrag extends Fragment {
                 int responseCode = con.getResponseCode();
                 if(responseCode==200) {
                     br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    ((MainActivity)getActivity()).camera_clicked = true;
                 } else {
                     System.out.println("error!!!!!!! responseCode= " + responseCode);
+                    ((MainActivity)getActivity()).camera_clicked = false;
+                    bt_camera.setImageResource(R.drawable.ic_camera);
                     br = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 }
                 String inputLine;
@@ -297,7 +303,6 @@ public class EmotionFrag extends Fragment {
                     }
                     br.close();
                     feelingId = getfeelingId(response);
-                    ((MainActivity)getActivity()).camera_clicked = true;
                     System.out.println(response.toString());
                 } else {
                     System.out.println("error !!!");
