@@ -1,10 +1,9 @@
 package com.example.osproject;
 
-import android.content.res.Resources;
-import android.media.Image;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,7 +27,6 @@ import com.bumptech.glide.Glide;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 public class CalPopupFrag extends DialogFragment {
 
@@ -48,9 +45,6 @@ public class CalPopupFrag extends DialogFragment {
     private TextView text_nomusic1;
     private TextView text_nomusic2;
 
-    private FrameLayout frame_weather_music;
-    private FrameLayout frame_emotion_music;
-
     public int year;
     public int month;
     public int day;
@@ -59,6 +53,9 @@ public class CalPopupFrag extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.calendar_popuplist,container,false);
 
+        if (getDialog() != null && getDialog().getWindow() != null) {
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         icon_weather = view.findViewById(R.id.icon_weather);
         icon_emotion = view.findViewById(R.id.icon_emotion);
         img_weather_cover = view.findViewById(R.id.img_weather_cover);
@@ -69,8 +66,6 @@ public class CalPopupFrag extends DialogFragment {
         text_emotion_artist = view.findViewById(R.id.text_emotion_artist);
         text_nomusic1 = view.findViewById(R.id.text_nomusic1);
         text_nomusic2 = view.findViewById(R.id.text_nomusic2);
-        frame_weather_music = view.findViewById(R.id.frame_weather_music);
-        frame_emotion_music = view.findViewById(R.id.frame_emotion_music);
         getPopupData th = new getPopupData();
         th.start();
 
@@ -146,7 +141,8 @@ public class CalPopupFrag extends DialogFragment {
                                     if (imageURL1.equals("null") || imageURL1.equals(""))
                                         img_weather_cover.setImageResource(R.drawable.ic_baseline_music_note_24);
                                     else
-                                        Glide.with(getActivity()).load(imageURL1).into(img_weather_cover);
+                                        Glide.with(getActivity()).load(imageURL1).placeholder(R.drawable.ic_baseline_music_note_24).
+                                                error(R.drawable.ic_baseline_music_note_24).into(img_weather_cover);
                                 }
 
                                 if (music[1] == null) {
@@ -182,7 +178,8 @@ public class CalPopupFrag extends DialogFragment {
                                     if (imageURL2.equals("null") || imageURL2.equals(""))
                                         img_emotion_cover.setImageResource(R.drawable.ic_baseline_music_note_24);
                                     else
-                                        Glide.with(getActivity()).load(imageURL2).into(img_emotion_cover);
+                                        Glide.with(getActivity()).load(imageURL2).placeholder(R.drawable.ic_baseline_music_note_24).
+                                                error(R.drawable.ic_baseline_music_note_24).into(img_emotion_cover);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

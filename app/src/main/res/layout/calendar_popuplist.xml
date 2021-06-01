@@ -43,7 +43,7 @@
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
-            android:background="#FAFAFA">
+            android:background="@drawable/bg_popup_player">
 
             <TextView
                 android:id="@+id/text_nomusic1"
@@ -116,7 +116,7 @@
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#FFFFFF">
+            android:background="@drawable/bg_popup_player">
 
             <TextView
                 android:id="@+id/text_nomusic2"
@@ -166,7 +166,9 @@
         android:id="@+id/bt_OK2"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
+        android:stateListAnimator="@null"
         android:text="OK"
-        app:backgroundTint="#00FFFFFF" />
+        android:textColor="#595959"
+        app:backgroundTint="#C9BED3" />
 
 </LinearLayout>

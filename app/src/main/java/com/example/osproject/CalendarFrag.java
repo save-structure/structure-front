@@ -1,31 +1,18 @@
 package com.example.osproject;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.res.Resources;
-import android.icu.util.Calendar;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,9 +21,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class CalendarFrag extends Fragment {
 
@@ -76,9 +67,16 @@ public class CalendarFrag extends Fragment {
         music_calendar = view.findViewById(R.id.music_calendar);
         text_nodata1 = view.findViewById(R.id.text_nodata1);
 
-        selectedmonth = Calendar.DAY_OF_MONTH;
+        selectedmonth = Calendar.DAY_OF_MONTH + 1;
         text_curmonth.setText(selectedmonth+"월");
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+        String getTime = sdf.format(date);
+        calendar.set(Integer.parseInt(getTime.substring(0,4)),
+                Integer.parseInt(getTime.substring(4,6))-1,Integer.parseInt(getTime.substring(6,8)));
         getTotalData(new VolleyCallBack() {
             @Override
             public void onSuccess() {
@@ -104,6 +102,7 @@ public class CalendarFrag extends Fragment {
                 dialog.day = dayOfMonth;
 
                 dialog.show(getFragmentManager(), "CalPopupFrag");
+
                 getMonthlyData(new VolleyCallBack() {
                     @Override
                     public void onSuccess() {

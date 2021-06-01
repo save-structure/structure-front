@@ -16,10 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cafesurround"
             android:text="오늘의 날씨는"
             android:textColor="#808080"
-            android:textSize="23dp"
-            android:fontFamily="@font/cafesurround"/>
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -179,17 +179,27 @@
         android:layout_marginRight="10dp">
 
 
+        <Button
+            android:id="@+id/bt_like"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="310dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/ic_baseline_favorite_24" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:text="날씨에 따른 노래 추천!"
-            android:textColor="@color/black"
+            android:text="날씨에 따른 노래 추천 :)"
+            android:textColor="#595959"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <FrameLayout
+            android:id="@+id/player_frame1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -197,6 +207,17 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/round3">
 
+
+            <TextView
+                android:id="@+id/text_nomusic4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="70dp"
+                android:text="추천받은 음악이 없습니다"
+                android:textColor="#595959"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/album_image"
@@ -218,26 +239,27 @@
 
             <TextView
                 android:id="@+id/song_title"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="22dp"
                 android:text="Zombie"
-                android:textColor="@color/black"
+                android:textColor="#595959"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/song_singer"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="70dp"
                 android:text="DAY6(데이식스)"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textColor="#595959"
+                android:textSize="14sp" />
 
             <Button
-                android:id="@+id/play_butt"
+                android:id="@+id/play_butt1"
                 android:layout_width="67dp"
                 android:layout_height="68dp"
                 android:layout_marginLeft="300dp"
@@ -248,47 +270,33 @@
                 android:backgroundTint="@null"
                 android:scaleType="fitCenter"></Button>
 
-<!--            <com.google.android.exoplayer2.ui.PlayerView-->
-<!--                android:id="@+id/video_view"-->
-<!--                android:layout_width="110dp"-->
-<!--                android:layout_height="70dp"-->
-<!--                android:layout_marginTop="80dp"-->
-<!--                android:layout_marginLeft="140dp"/>-->
+            <!--            <com.google.android.exoplayer2.ui.PlayerView-->
+            <!--                android:id="@+id/video_view"-->
+            <!--                android:layout_width="110dp"-->
+            <!--                android:layout_height="70dp"-->
+            <!--                android:layout_marginTop="80dp"-->
+            <!--                android:layout_marginLeft="140dp"/>-->
 
         </FrameLayout>
 
         <TextView
+            android:id="@+id/addmusic1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="220dp"
-            android:text="이 노래를 플레이리스트에 추가 할까요?"
-            android:textSize="20dp"></TextView>
-
-        <Button
-            android:id="@+id/thumbs_up"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="285dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/ic_baseline_thumb_up_24"></Button>
+            android:layout_marginTop="230dp"
+            android:text="이 노래를 플레이리스트에 추가할까요?"
+            android:textColor="#595959"
+            android:textSize="18sp"></TextView>
 
 
-<!--        <Button-->
+        <!--        <Button-->
 <!--            android:id="@+id/thumbs_up_selected"-->
 <!--            android:layout_width="40dp"-->
 <!--            android:layout_height="40dp"-->
 <!--            android:layout_marginLeft="280dp"-->
 <!--            android:layout_marginTop="245dp"-->
 <!--            android:background="@drawable/ic_baseline_thumb_up_24_selected"></Button>-->
-
-        <Button
-            android:id="@+id/thumbs_down"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="340dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/ic_baseline_thumb_down_24"></Button>
 
 
     </FrameLayout>

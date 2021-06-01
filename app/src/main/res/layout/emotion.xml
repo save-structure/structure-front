@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,11 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cafesurround"
             android:text="오늘 나의 기분은"
             android:textColor="#808080"
-            android:textSize="23dp"
-            android:fontFamily="@font/cafesurround"
-            />
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -30,6 +29,7 @@
         android:layout_height="wrap_content">
 
         <FrameLayout
+            android:id="@+id/background_color2"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginLeft="10dp"
@@ -37,29 +37,17 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/round2">
 
-            <ImageView
-                android:id="@+id/testImage"
-                android:layout_width="71dp"
-                android:layout_height="74dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/image_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="200dp"
-                android:layout_marginLeft="200dp"
-                android:text="인공지능결과나오는곳" />
-
             <TextView
                 android:id="@+id/text_selectemotion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="60dp"
                 android:text="기분을 선택하세요:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textSize="20sp"
+                android:textColor="#595959"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/rg_emotions"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +62,8 @@
                 android:layout_marginTop="195dp"
                 android:background="#00302723"
                 android:text="OK"
-                android:textColor="#FFFFFF"
-                android:textColorLink="#FFFFFF"
+                android:textColor="#595959"
+                android:textColorLink="#595959"
                 android:textSize="16sp" />
 
             <RadioGroup
@@ -160,21 +148,22 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp">
 
 
         <TextView
             android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:text="기분에 따른 노래 추천!"
-            android:textColor="@color/black"
+            android:text="기분에 따른 노래 추천 :)"
+            android:textColor="#2B2B2B"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <FrameLayout
+            android:id="@+id/player_frame2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -182,6 +171,15 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/round3">
 
+
+            <TextView
+                android:id="@+id/text_nomusic6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="190dp"
+                android:layout_marginTop="110dp"
+                android:text="재생할 수 없는 음악입니다"
+                android:visibility="invisible" />
 
             <ImageView
                 android:id="@+id/album_image2"
@@ -194,27 +192,27 @@
 
             <TextView
                 android:id="@+id/song_title2"
-                android:layout_width="100dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
                 android:layout_marginTop="22dp"
                 android:text="Zombie"
-                android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textColor="#595959"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/song_singer2"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="140dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="70dp"
                 android:text="DAY6(데이식스)"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textColor="#595959"
+                android:textSize="14sp" />
 
             <Button
-                android:id="@+id/play_butt"
+                android:id="@+id/play_butt2"
                 android:layout_width="67dp"
                 android:layout_height="68dp"
                 android:layout_marginLeft="300dp"
@@ -224,32 +222,39 @@
                 android:backgroundTint="@null"
                 android:scaleType="fitCenter"></Button>
 
+            <TextView
+                android:id="@+id/text_nomusic5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="110dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="70dp"
+                android:text="추천받은 음악이 없습니다"
+                android:textColor="#595959"
+                android:textSize="16sp" />
+
 
         </FrameLayout>
 
         <TextView
+            android:id="@+id/addmusic2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="220dp"
-            android:text="이 노래를 플레이리스트에 추가 할까요?"
-            android:textSize="20dp"></TextView>
+            android:layout_marginTop="230dp"
+            android:text="이 노래를 플레이리스트에 추가할까요?"
+            android:textColor="#595959"
+            android:textSize="18sp"></TextView>
 
         <Button
-            android:id="@+id/bt_thumbup2"
+            android:id="@+id/bt_like2"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="285dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/ic_baseline_thumb_up_24"></Button>
-
-        <Button
-            android:id="@+id/bt_thumbdown2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="340dp"
-            android:layout_marginTop="250dp"
-            android:background="@drawable/ic_baseline_thumb_down_24"></Button>
+            android:layout_marginStart="310dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/ic_baseline_favorite_24" />
 
 
     </FrameLayout>
