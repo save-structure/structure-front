@@ -6,16 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-<!--    // refresh할 layout에 id 할당-->
-<!--    //android:id="@+id/swipe_refresh_layout"-->
-<!--    // android:background="@color/design_default_color_on_primary" 사이즈 확인-->
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"/>-->
-    <!--    -->
-    <!--    </LinearLayout>-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -30,30 +20,39 @@
             android:textSize="23dp" />
 
     </LinearLayout>
-
-
-<!--    android:layoutscrollbarFadDuration="0"-->
-<!--    android:layout_id="@+id/rv"-->
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#B5B8BA"
+            android:scrollbarSize="5dp"
+            android:scrollbarThumbVertical="@android:color/white"
+            android:scrollbars="vertical"/>
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background ="#B5B8BA"
-        android:layout_weight="1"
-        android:scrollbarSize="5dp"
-        android:scrollbarThumbVertical="@android:color/white"
-        android:scrollbars="vertical" />
+        android:layout_height="36dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="날씨 필터"
+            android:textColor="#808080"
+            android:textSize="15dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="날씨 필터"
-        android:textColor="#808080"
-        android:layout_marginVertical="5dp"
-        android:layout_marginLeft="20dp"
-        android:textSize="15dp" />
+        <Button
+            android:id="@+id/filter_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="5dp"
+            android:text="OK"
+            android:textSize="10dp" />
+
+    </FrameLayout>
 
     <HorizontalScrollView
         android:layout_width="wrap_content"

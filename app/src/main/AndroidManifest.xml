@@ -29,6 +29,7 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".YouTubePlayerFrag"> </activity>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -40,5 +41,10 @@
         </provider>
 
     </application>
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
 
 </manifest>

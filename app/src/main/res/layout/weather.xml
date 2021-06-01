@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/weather_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-
-    // refresh할 layout에 id 할당
-    //android:id="@+id/swipe_refresh_layout"
-    // android:background="@color/design_default_color_on_primary" 사이즈 확인
-
-    <!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"/>-->
-<!--    -->
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="120dp"
         android:layout_marginRight="10dp">
 
 
@@ -183,7 +174,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="390dp"
         android:layout_marginRight="10dp">
 
 
@@ -250,6 +241,7 @@
                 android:layout_height="68dp"
                 android:layout_marginLeft="300dp"
                 android:layout_marginTop="80dp"
+                android:onClick="mOnPopupClick"
                 android:adjustViewBounds="true"
                 android:background="@drawable/baseline_play_arrow_24"
                 android:backgroundTint="@null"
@@ -261,7 +253,6 @@
 <!--                android:layout_height="70dp"-->
 <!--                android:layout_marginTop="80dp"-->
 <!--                android:layout_marginLeft="140dp"/>-->
-
 
         </FrameLayout>
 
@@ -303,4 +294,4 @@
 
 
 
-</LinearLayout>
+</FrameLayout>

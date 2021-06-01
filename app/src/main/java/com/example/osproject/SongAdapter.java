@@ -1,6 +1,8 @@
 package com.example.osproject;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ import java.util.List;
 // MyView와 ArrayList<Song>을 사용하기 위해 필요
 public class SongAdapter extends RecyclerView.Adapter<MyView> {
 
+    private ActionMode actionMode;
+
     public SongAdapter(List<Song> songs) {
         this.songs = songs;
     }
@@ -31,18 +35,19 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
     @NonNull
     @Override
     public MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.e("onCreateViewHolder : ", "called");
         // item_layout 부분을 컨트롤하는 부분 (노래 한곡 부분)
         context = parent.getContext();
         // fragment의 view를 만들거나 Recyclerview에서 viewholder를 만들때 사용하는
         LayoutInflater inflater = LayoutInflater.from(context);
         View songView = inflater.inflate(R.layout.item_layout, parent, false);
         MyView viewHolder = new MyView(songView);
-
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyView holder, int position) {
+        Log.e("onBindViewHolder : ", "called");
         // 각 노래 보여지는 부분에 어떤 노래가 보여질지..?
         Song song = songs.get(position);
 
@@ -66,4 +71,5 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
     public int getItemCount() {
         return songs.size();
     }
+
 }

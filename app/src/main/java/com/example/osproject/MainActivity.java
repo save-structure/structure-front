@@ -23,6 +23,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private EmotionFrag emotion;
     private CalendarFrag calendar;
     private PlaylistFrag playlist;
+
+//    private YouTubePlayerFrag youTubePlayerFrag;
 
     public int type1 = 1, type2 = 1;
     public boolean emotion_selected = false;
@@ -57,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         emotion = new EmotionFrag();
         calendar = new CalendarFrag();
         playlist = new PlaylistFrag();
+
+//        youTubePlayerFrag = new YouTubePlayerFrag();
 
         setFrag(0);         //첫 프래그먼트 화면 지정
 
@@ -92,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 ft.replace(R.id.main_frame, weather);
                 ft.commit();
+//                ft.replace(R.id.playerview, youTubePlayerFrag);
                 break;
             case 1:
                 ft.replace(R.id.main_frame, emotion);
@@ -107,5 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
+//    public void replaceFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.action_weather, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
+//    }
 }
