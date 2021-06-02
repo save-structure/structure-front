@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
     public boolean weather_music_recom = false;
     public boolean weather_like = false;
     public boolean emotion_like = false;
-    public String song_title2;
-    public String song_singer2;
-    public String album_image2;
-    public String song_title;
-    public String song_singer;
-    public String album_image;
-    public String youtube1;
-    public String youtube2;
+    public String song_title2="";
+    public String song_singer2="";
+    public String album_image2="";
+    public String song_title="";
+    public String song_singer="";
+    public String album_image="";
+    public String youtube1="";
+    public String youtube2="";
 
 
     @Override
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 ft.replace(R.id.main_frame, weather);
                 ft.commit();
-//                ft.replace(R.id.playerview, youTubePlayerFrag);
                 break;
             case 1:
                 ft.replace(R.id.main_frame, emotion);
@@ -99,9 +98,5 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-//    public void replaceFragment(Fragment fragment) {
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.action_weather, fragment).commit();      // Fragment로 사용할 MainActivity내의 layout공간을 선택합니다.
-//    }
+
 }

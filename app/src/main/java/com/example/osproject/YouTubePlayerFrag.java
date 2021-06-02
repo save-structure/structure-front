@@ -41,7 +41,6 @@ public class YouTubePlayerFrag extends YouTubeBaseActivity {
         youtube = intent.getStringExtra("youtube");
         if(intent.getStringExtra("data").equals("play"))
             mYouTubePlayerView.initialize(YoutubeConfig.getApiKey(),mOnInitializedListener);
-
     }
 
 }
