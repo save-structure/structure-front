@@ -14,9 +14,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Playlist"
-            android:textColor="#808080"
-            android:textSize="23dp" />
+            android:fontFamily="@font/cafesurround"
+            android:text="My Playlist"
+            android:textColor="#9575CD"
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -26,10 +27,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="#B5B8BA"
         android:scrollbarSize="5dp"
         android:scrollbarThumbVertical="@android:color/white"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="36dp">
@@ -51,6 +53,7 @@
             android:layout_marginLeft="310dp"
             android:layout_marginTop="5dp"
             android:text="OK"
+            android:background="#00302723"
             android:textSize="10dp" />
 
     </FrameLayout>
@@ -79,6 +82,7 @@
 
                 <RadioButton
                     android:id="@+id/rb_no_noweather"
+                    android:checked = "true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -165,6 +169,7 @@
 
         <RadioButton
             android:id="@+id/rb_no_nofeeling"
+            android:checked = "true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

@@ -101,6 +101,8 @@ public class EmotionFrag extends Fragment {
         if(((MainActivity)getActivity()).camera_clicked){
             Log.e("camera ","already clicked");
             bt_camera.setImageResource(R.drawable.ic_camera_selected);
+        }else{
+            bt_camera.setImageResource(R.drawable.ic_camera);
         }
 
         //이미 선택되었을 경우 버튼 ENABLE = FALSE 처리
@@ -139,7 +141,9 @@ public class EmotionFrag extends Fragment {
         bt_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("onclick");
                 captureImage();
+
                 bt_camera.setImageResource(R.drawable.ic_camera_selected);
             }
         });
@@ -157,7 +161,8 @@ public class EmotionFrag extends Fragment {
         bt_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!((MainActivity) getActivity()).emotion_selected) {
+                if(!((MainActivity) getActivity()).emotion_selected &&  //선택 아직 x || 버튼을 눌렀거나 카메라를 찍었거나
+                        (rg_emotions.getCheckedRadioButtonId()!=-1||((MainActivity)getActivity()).camera_clicked)) {
                     ((MainActivity) getActivity()).emotion_selected = true;
                     for (int i = 0; i < rg_emotions.getChildCount(); i++) {
                         rg_emotions.getChildAt(i).setEnabled(false);
@@ -241,6 +246,7 @@ public class EmotionFrag extends Fragment {
     class getAPI extends Thread{
         @Override
         public void run(){
+            System.out.println("run");
             StringBuffer reqStr = new StringBuffer();
             String clientId = "";
             String clientSecret = "";
@@ -285,8 +291,11 @@ public class EmotionFrag extends Fragment {
                 int responseCode = con.getResponseCode();
                 if(responseCode==200) {
                     br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    ((MainActivity)getActivity()).camera_clicked = true;
                 } else {
                     System.out.println("error!!!!!!! responseCode= " + responseCode);
+                    ((MainActivity)getActivity()).camera_clicked = false;
+                    bt_camera.setImageResource(R.drawable.ic_camera);
                     br = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 }
                 String inputLine;
@@ -297,7 +306,6 @@ public class EmotionFrag extends Fragment {
                     }
                     br.close();
                     feelingId = getfeelingId(response);
-                    ((MainActivity)getActivity()).camera_clicked = true;
                     System.out.println(response.toString());
                 } else {
                     System.out.println("error !!!");
@@ -346,6 +354,7 @@ public class EmotionFrag extends Fragment {
 
     //사진촬영
     public void captureImage() {
+        System.out.println("captureimage");
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(cameraIntent.resolveActivity(getActivity().getPackageManager())!=null){
             File imageFile = null;
@@ -354,10 +363,12 @@ public class EmotionFrag extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println("imageFile"+imageFile.toString());
             if(imageFile!=null){
                 Uri imageUri = FileProvider.getUriForFile(getActivity(),"com.example.android.provider",imageFile);
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
-                startActivityForResult(cameraIntent,IMAGE_REQUEST);
+                System.out.println("startActivityresult");
+                this.startActivityForResult(cameraIntent,IMAGE_REQUEST);
             }
         }
     }
@@ -366,9 +377,12 @@ public class EmotionFrag extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("onActivityresult");
         if (requestCode == IMAGE_REQUEST) {
             File f = new File(currentPhotoPath);
+
             if(f.exists()) {
+                System.out.println("onActivityresult");
                 Thread th = new getAPI();
                 th.start();
             }
@@ -387,8 +401,8 @@ public class EmotionFrag extends Fragment {
                 storageDir
         );
 
-        currentPhotoPath = image.getAbsolutePath();
-
+        currentPhotoPath = image.getPath();
+        System.out.println(currentPhotoPath);
         return image;
     }
 

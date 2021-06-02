@@ -108,12 +108,16 @@ public class WeatherFrag extends Fragment {
 
         //날씨 위젯 배경색 시간대 별로 달라지게
         FrameLayout bg_color  = (FrameLayout) view.findViewById(R.id.background_color);
+
         if(formatDate.compareTo("19")>0 && formatDate.compareTo("23")<0)
             bg_color.setBackgroundResource(R.drawable.morning);
         else if(formatDate.compareTo("23")>0 && formatDate.compareTo("08")<0)
-            bg_color.setBackgroundResource(R.drawable.day);
-        else
             bg_color.setBackgroundResource(R.drawable.night);
+        else
+            bg_color.setBackgroundResource(R.drawable.day);
+
+
+
 
         //날씨 기반 음악 추천
         song_title = (TextView)view.findViewById(R.id.song_title);
@@ -353,6 +357,49 @@ public class WeatherFrag extends Fragment {
             );
             requestQueue.add(objectRequest);
     }
+
+
+//    public Location getLocation(){
+//        try{
+//            AccessibilityService mContext = null;
+//            locationManager = (LocationManager)mContext.getSystemService(LOCATION_SERVICE);
+//            isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+//            isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+//
+//            if(!isGPSEnabled && !isNetworkEnabled){
+//            }
+//            else{
+//                this.isGetLocation = true;
+//                if(isNetworkEnabled){
+//                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, locationListener);
+//                    if(locationManager != null){
+//                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//                        if(location !=null){
+//                            lat = location.getLatitude();
+//                            lon = location.getLongitude();
+//                        }
+//                    }
+//                }
+//
+//                if(isGPSEnabled){
+//                    if(location == null){
+//                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, locationListener);
+//                        if(locationManager != null){
+//                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//                            if(location !=null){
+//                                lat = location.getLatitude();
+//                                lon = location.getLongitude();
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return location;
+//    }
 }
 
 

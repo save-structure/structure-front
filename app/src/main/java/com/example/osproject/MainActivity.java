@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private CalendarFrag calendar;
     private PlaylistFrag playlist;
 
-//    private YouTubePlayerFrag youTubePlayerFrag;
-
     public int type1 = 1, type2 = 1;
 
     public boolean camera_clicked = false;
@@ -50,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         emotion = new EmotionFrag();
         calendar = new CalendarFrag();
         playlist = new PlaylistFrag();
-
-//        youTubePlayerFrag = new YouTubePlayerFrag();
 
         setFrag(0);         //첫 프래그먼트 화면 지정
 

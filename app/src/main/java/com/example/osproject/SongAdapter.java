@@ -1,11 +1,13 @@
 package com.example.osproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,7 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
 
     // 추상클래스?? 얘 뭐하는애임 ?
    Context context;
+    View songView;
 
     @NonNull
     @Override
@@ -40,7 +43,7 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
         context = parent.getContext();
         // fragment의 view를 만들거나 Recyclerview에서 viewholder를 만들때 사용하는
         LayoutInflater inflater = LayoutInflater.from(context);
-        View songView = inflater.inflate(R.layout.item_layout, parent, false);
+        songView = inflater.inflate(R.layout.item_layout, parent, false);
         MyView viewHolder = new MyView(songView);
         return viewHolder;
     }
@@ -62,9 +65,20 @@ public class SongAdapter extends RecyclerView.Adapter<MyView> {
         String img_url = song.getImg_url();
         if (img_url.equals("null") || img_url.equals(""))
             album_img.setImageResource(R.drawable.ic_baseline_music_note_24);
-        else Glide.with(context).load(img_url).into(album_img);
+        else Glide.with(context).load(img_url).placeholder(R.drawable.ic_baseline_music_note_24).
+                error(R.drawable.ic_baseline_music_note_24).into(album_img);
 
-        Glide.with(context).load(song.getImg_url()).into(album_img);
+        Button button = songView.findViewById(R.id.play_butt0);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("Playlist button:", "clicked!");
+                Intent intent = new Intent(songView.getContext(),YouTubePlayerFrag.class);
+                intent.putExtra("data","play");
+                intent.putExtra("youtube", song.getSong_url());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

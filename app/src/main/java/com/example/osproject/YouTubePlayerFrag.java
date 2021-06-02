@@ -32,6 +32,7 @@ public class YouTubePlayerFrag extends YouTubeBaseActivity {
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
                 Log.d(TAG, "onClick:Failed to initialize.");
+                return;
             }
         };
 

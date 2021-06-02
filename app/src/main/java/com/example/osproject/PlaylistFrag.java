@@ -360,7 +360,10 @@ public class PlaylistFrag extends Fragment {
                             String singer = songObject.getString("singer");
                             String title = songObject.getString("musicName");
                             String imgUrl = songObject.getString("imageUrl");
-                            Song song = new Song(title, singer, imgUrl);
+                            String Url = songObject.getString("youtubeUrl");
+                            int idx = Url.indexOf("=");
+                            String tubeUrl = Url.substring(idx + 1);
+                            Song song = new Song(title, singer, imgUrl, tubeUrl);
                             favList.add(i, song);
                             Log.e("JsonParsing_thumb_up", "Singer : " + singer);
                             callBack.onSuccess();
@@ -398,8 +401,10 @@ public class PlaylistFrag extends Fragment {
                             String singer = songObject.getString("singer");
                             String title = songObject.getString("musicName");
                             String imgUrl = songObject.getString("imageUrl");
-
-                            Song song = new Song(title, singer, imgUrl);
+                            String Url = songObject.getString("youtubeUrl");
+                            int idx = Url.indexOf("=");
+                            String tubeUrl = Url.substring(idx + 1);
+                            Song song = new Song(title, singer, imgUrl, tubeUrl);
                             favList.add(i, song);
                             Log.e("JsonParsing_weather", "Singer : " + singer);
                             callBack.onSuccess();
@@ -438,7 +443,10 @@ public class PlaylistFrag extends Fragment {
                             String singer = songObject.getString("singer");
                             String title = songObject.getString("musicName");
                             String imgUrl = songObject.getString("imageUrl");
-                            Song song = new Song(title, singer, imgUrl);
+                            String Url = songObject.getString("youtubeUrl");
+                            int idx = Url.indexOf("=");
+                            String tubeUrl = Url.substring(idx + 1);
+                            Song song = new Song(title, singer, imgUrl, tubeUrl);
                             favList.add(i, song);
                             Log.e("JsonParsing_feeling", "Singer : " + singer);
                             callBack.onSuccess();
